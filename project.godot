@@ -14,3 +14,7 @@ config/name="Game Design Project 5"
 run/main_scene="res://project/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://project/icon.svg"
+
+[autoload]
+
+Items="*res://project/scripts/inventory/items.gd"
