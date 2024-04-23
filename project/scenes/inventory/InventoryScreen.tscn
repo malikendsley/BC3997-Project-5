@@ -6,8 +6,10 @@
 script = ExtResource("1_r2fay")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 1052.0
+offset_bottom = 548.0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
