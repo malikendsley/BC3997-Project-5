@@ -14,3 +14,8 @@ config/name="Game Design Project 5"
 run/main_scene="res://project/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://project/icon.svg"
+
+[display]
+
+window/size/viewport_width=1940
+window/size/viewport_height=1030
