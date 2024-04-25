@@ -13,3 +13,15 @@ var health: int
 
 func _ready() -> void:
     health = max_health
+
+func take_damage(instance: DamageInstance):
+    health -= instance.damage
+    if instance.damage != 0:
+        health_changed.emit(health)
+    if health <= 0:
+        no_health.emit(instance)
+
+func heal(amount: int) -> void:
+    health = min(max_health, health + amount)
+    if amount != 0:
+        health_changed.emit(health)
