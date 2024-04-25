@@ -1,0 +1,25 @@
+{
+  "items": {
+	"wood": {
+	  "id": "wood",
+	  "name": "Wood",
+	  "type": "Resource",
+	  "recipe": null,
+	  "is_equippable": false
+	},
+	"stone": {
+	  "id": "stone",
+	  "name": "Stone",
+	  "type": "Resource",
+	  "recipe": null,
+	  "is_equippable": false
+	},
+	"stone_sword": {
+	  "id": "stone_sword",
+	  "name": "Stone Sword",
+	  "type": "Weapon",
+	  "recipe": ["stone", "stone", "wood"],
+	  "is_equippable": true
+	}
+  }
+}
