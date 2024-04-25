@@ -17,5 +17,7 @@ config/icon="res://project/icon.svg"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=107
+window/size/viewport_height=60
+window/stretch/mode="canvas_items"
+window/stretch/scale=0.5
