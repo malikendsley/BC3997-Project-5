@@ -1,6 +1,6 @@
 extends Node
 
-var inventory_screen_scene = preload("res://project/scenes/inventory/InventoryScreen.tscn")
+var inventory_screen_scene = preload("res://project/scenes/ui/inventory/inventory_ui.tscn")
 var time_passed: float = 0.0
 
 # Called when the node enters the scene tree for the first time.

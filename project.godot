@@ -18,14 +18,15 @@ Items="*res://project/scripts/inventory/items.gd"
 
 [autoload]
 
-InputBuffer="*res://project/scripts/mechanics/input_buffer.gd"
 Items="*res://project/scripts/inventory/items.gd"
+InputBuffer="*res://project/scripts/mechanics/input_buffer.gd"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=180
 window/stretch/mode="canvas_items"
+window/stretch/scale=0.5
 
 [input]
 
