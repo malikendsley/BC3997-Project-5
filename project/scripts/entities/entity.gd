@@ -11,17 +11,17 @@ extends CharacterBody2D
 #endregion
 
 func _ready() -> void:
-    add_to_group("entity")
-    # Connect to component signals here
-    stat_component.no_health.connect(handle_destroyed)
-    hurt_component.damaged.connect(handle_hit)
+	add_to_group("entity")
+	# Connect to component signals here
+	stat_component.no_health.connect(handle_destroyed)
+	hurt_component.damaged.connect(handle_hit)
 
 # hit, deflect and destroyed behavior common to every entity
 func handle_hit(_d_i: DamageInstance) -> void:
-    hurt_area_component.is_invulnerable = true
+	hurt_area_component.is_invulnerable = true
 
 func handle_deflect() -> void:
-    pass
+	pass
 
 func handle_destroyed(_d_i: DamageInstance) -> void:
-    pass
+	pass

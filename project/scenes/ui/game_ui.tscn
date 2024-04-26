@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b48hx3yeervyu"]
+[gd_scene load_steps=12 format=3 uid="uid://b48hx3yeervyu"]
 
 [ext_resource type="Texture2D" uid="uid://bgfl7l4l4n5la" path="res://raw_art/blockouts/status_bar.png" id="1_jau2y"]
 [ext_resource type="Script" path="res://project/scenes/ui/game_ui_controller.gd" id="1_xbwlw"]
+[ext_resource type="PackedScene" uid="uid://c8stli0xte3of" path="res://project/scenes/ui/inventory/inventory_ui.tscn" id="2_ecsfs"]
 [ext_resource type="Texture2D" uid="uid://b5kl8juu5qdbe" path="res://raw_art/blockouts/icon_sheet.png" id="2_ijm5i"]
 
 [sub_resource type="Gradient" id="Gradient_axyeu"]
@@ -69,6 +70,9 @@ value = 100.0
 rounded = true
 texture_under = SubResource("GradientTexture2D_jslgu")
 texture_progress = SubResource("GradientTexture2D_hjjei")
+
+[node name="InventoryScreen" parent="Control" instance=ExtResource("2_ecsfs")]
+layout_mode = 1
 
 [node name="HPBar" type="Sprite2D" parent="."]
 position = Vector2(72, 16)
