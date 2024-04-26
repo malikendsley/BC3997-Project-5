@@ -19,6 +19,13 @@ config/icon="res://project/icon.svg"
 
 Items="*res://project/scripts/inventory/items.gd"
 
+[display]
+
+window/size/viewport_width=107
+window/size/viewport_height=60
+window/stretch/mode="canvas_items"
+window/stretch/scale=0.5
+
 [input]
 
 open_crafting={
