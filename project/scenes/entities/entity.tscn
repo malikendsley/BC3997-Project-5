@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbyh3nd31pvvp"]
+
+[ext_resource type="Script" path="res://project/scripts/entities/entity.gd" id="1_kh6d5"]
+[ext_resource type="Script" path="res://project/scripts/components/stat_component.gd" id="1_x2fu7"]
+[ext_resource type="Script" path="res://project/scripts/components/hurt_component.gd" id="2_03hgm"]
+
+[node name="Entity" type="CharacterBody2D"]
+script = ExtResource("1_kh6d5")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="Sprites"]
+unique_name_in_owner = true
+
+[node name="MoveBox" type="CollisionShape2D" parent="."]
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="StatComponent" type="Node" parent="Components"]
+unique_name_in_owner = true
+script = ExtResource("1_x2fu7")
+
+[node name="HurtComponent" type="Area2D" parent="Components" node_paths=PackedStringArray("stat_component")]
+unique_name_in_owner = true
+script = ExtResource("2_03hgm")
+stat_component = NodePath("../StatComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtComponent"]

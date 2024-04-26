@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bqcv563e1c484"]
+[gd_scene load_steps=36 format=3 uid="uid://bqcv563e1c484"]
 
 [ext_resource type="Texture2D" uid="uid://ye4rxus7wyxm" path="res://project/icon.svg" id="1_w28r4"]
 [ext_resource type="Texture2D" uid="uid://0efows81c8m6" path="res://raw_art/asset_packs/village assets/Art/Ground Tileset/Tileset_Ground.png" id="2_autjy"]
