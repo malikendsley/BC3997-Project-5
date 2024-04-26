@@ -6,24 +6,18 @@
 script = ExtResource("1_cubpl")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_left = 100.0
-offset_top = 100.0
-offset_right = 1052.0
-offset_bottom = 548.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
+color = Color(0.25098, 0.0509804, 0.054902, 0.419608)
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
 layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer"]
-layout_mode = 2
-
-[node name="TestButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test"
+text = "Inventory"

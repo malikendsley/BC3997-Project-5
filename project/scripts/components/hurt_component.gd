@@ -13,21 +13,21 @@ signal damaged(damage_instance: DamageInstance)
 var invulnerable_duration_timer: Timer = Timer.new()
 
 var is_invulnerable: bool = false:
-    set(value):
-        is_invulnerable = value
-        invulnerable_duration_timer.start(invulnerable_duration)
+	set(value):
+		is_invulnerable = value
+		invulnerable_duration_timer.start(invulnerable_duration)
 
 func _ready():
-    add_child(invulnerable_duration_timer)
-    invulnerable_duration_timer.one_shot = true
-    invulnerable_duration_timer.timeout.connect(handle_invulnerability_timeout)
+	add_child(invulnerable_duration_timer)
+	invulnerable_duration_timer.one_shot = true
+	invulnerable_duration_timer.timeout.connect(handle_invulnerability_timeout)
 
 func check_hit(damage_instance: DamageInstance):
-    if is_invulnerable:
-        return
-    if damage_instance.faction != faction:
-        stat_component.take_damage(damage_instance)
-        damaged.emit(damage_instance)
+	if is_invulnerable:
+		return
+	if damage_instance.faction != faction:
+		stat_component.take_damage(damage_instance)
+		damaged.emit(damage_instance)
 
 func handle_invulnerability_timeout() -> void:
-    is_invulnerable = false
+	is_invulnerable = false

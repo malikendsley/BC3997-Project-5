@@ -5,6 +5,8 @@ extends CanvasLayer
 @onready var energy_progress_bar: TextureProgressBar = %EnergyProgressBar
 @onready var icon: Sprite2D = %Icon
 
+var inventory_screen_scene = preload("res://project/scenes/ui/inventory/inventory_ui.tscn")
+
 var max_hp: float = 0
 var max_energy: float = 0
  
@@ -28,3 +30,11 @@ func set_hp(new_hp: float) -> void:
 
 func set_energy(new_energy: float) -> void:
 	energy_progress_bar.value = new_energy
+
+func _process(delta):
+	if Input.is_action_pressed("open_crafting"):
+		inventory_screen()
+
+func inventory_screen():
+	var inventory_screen_instance = inventory_screen_scene.instantiate()
+	get_tree().get_root().add_child(inventory_screen_instance)
