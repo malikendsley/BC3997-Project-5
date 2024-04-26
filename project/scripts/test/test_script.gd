@@ -11,6 +11,7 @@ func _ready():
 func _process(delta):
 	time_passed += delta
 	if(time_passed > 1.0):
+		print(Items.items)
 		print(Inventory.items)
 		time_passed = 0.0
 	Inventory.add_item("wood")
