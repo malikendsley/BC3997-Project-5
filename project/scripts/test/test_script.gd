@@ -11,10 +11,9 @@ func _ready():
 func _process(delta):
 	time_passed += delta
 	if(time_passed > 1.0):
-		print(Items.items)
-		print(Items.player_items)
+		print(Inventory.items)
 		time_passed = 0.0
-	Items.add_item("wood")
+	Inventory.add_item("wood")
 	
 	if Input.is_action_pressed("open_crafting"):
 		inventory_screen()

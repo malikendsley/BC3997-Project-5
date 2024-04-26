@@ -1,6 +1,6 @@
 extends Node
 
-func _process(delta):
+func _process(_delta:float):
 	if Input.is_action_pressed("close_crafting"):
 		close_inventory_screen()
 		
