@@ -14,7 +14,9 @@ var health: int
 func _ready() -> void:
 	health = max_health
 
-func take_damage(instance: DamageInstance):
+# specifically decreases health by the amount of damage in the DamageInstance
+# generally only called by hurt component, to deal damage programmatically, call its hurt method 
+func decrease_health(instance: DamageInstance):
 	health -= instance.damage
 	if instance.damage != 0:
 		health_changed.emit(health)

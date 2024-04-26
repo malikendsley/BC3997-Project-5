@@ -74,6 +74,19 @@ texture_progress = SubResource("GradientTexture2D_hjjei")
 [node name="InventoryScreen" parent="Control" instance=ExtResource("2_ecsfs")]
 layout_mode = 1
 
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "damage all enemies"
+
 [node name="HPBar" type="Sprite2D" parent="."]
 position = Vector2(72, 16)
 scale = Vector2(0.5, 0.5)
@@ -85,3 +98,5 @@ position = Vector2(20, 16)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_ijm5i")
 hframes = 6
+
+[connection signal="pressed" from="Control/Button" to="." method="_damage_all_enemies"]
