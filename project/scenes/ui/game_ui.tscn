@@ -40,8 +40,6 @@ height = 3
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_xbwlw")
 
-[node name="InventoryScreen" parent="." instance=ExtResource("2_ecsfs")]
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -72,6 +70,9 @@ value = 100.0
 rounded = true
 texture_under = SubResource("GradientTexture2D_jslgu")
 texture_progress = SubResource("GradientTexture2D_hjjei")
+
+[node name="InventoryScreen" parent="Control" instance=ExtResource("2_ecsfs")]
+layout_mode = 1
 
 [node name="HPBar" type="Sprite2D" parent="."]
 position = Vector2(72, 16)
