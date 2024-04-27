@@ -1,5 +1,7 @@
 extends Node
 
+signal refresh_inventory
+
 @export var items: Dictionary = {}
 
 # Add an item by item id ("wood", "stone", etc.) to the player's inventory.
@@ -44,18 +46,25 @@ func has_item(item: String) -> bool:
 
 # Returns true if item is craftable with the items the user currently possesses, false otherwise.
 func can_craft(item: String) -> bool:
+	if !Items.is_item(item):
+		print("can_craft: invalid item ", item)
+		return false
 	var recipe:Dictionary = Items.get_recipe(item)
 	for i in recipe:
 		if get_quantity(i) < recipe[i]:
 			return false
 	return true
 
-func craft(item: String):
+# Crafts an item (takes away item's recipe from inventory; adds that crafted item)
+func craft(item: String) -> bool:
+	if !Items.is_item(item):
+		print("craft: invalid item ", item)
+		return false
 	if not can_craft(item):
-		return
+		return false
 	
 	var recipe:Dictionary = Items.get_recipe(item)
 	for i in recipe:
 		remove_item(i, recipe[i])
 	add_item(item)
-	return
+	return true

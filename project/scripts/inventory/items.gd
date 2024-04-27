@@ -3,7 +3,8 @@ extends Node
 # Enum for item types
 enum Type {UNDEFINED, 
 	RESOURCE, 
-	WEAPON}
+	WEAPON,
+	ITEM}
 
 # Inner Item class
 class Item:
