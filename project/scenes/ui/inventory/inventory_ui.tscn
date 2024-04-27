@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8stli0xte3of"]
 
 [ext_resource type="Script" path="res://project/scenes/ui/inventory/inventory_ui_controller.gd" id="1_cubpl"]
-[ext_resource type="Texture2D" uid="uid://vij0s66h6y84" path="res://project/textures/items/wood.png" id="2_70a47"]
+[ext_resource type="PackedScene" uid="uid://baimwd3yd2jb1" path="res://project/scenes/ui/inventory/inventory_item_ui.tscn" id="2_3ivc0"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -26,20 +26,6 @@ anchor_right = 0.4
 anchor_bottom = 1.0
 offset_right = -10.0
 
-[node name="MarginContainer" type="MarginContainer" parent="InventoryControl"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.2
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="InventoryControl/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Inventory"
-horizontal_alignment = 1
-
 [node name="ScrollContainer" type="ScrollContainer" parent="InventoryControl"]
 layout_mode = 1
 anchors_preset = -1
@@ -47,7 +33,7 @@ anchor_top = 0.2
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
-offset_bottom = -10.0
+offset_bottom = -9.99999
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryControl/ScrollContainer"]
@@ -55,78 +41,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(20, 20)
+[node name="InventoryItem" parent="InventoryControl/ScrollContainer/VBoxContainer" instance=ExtResource("2_3ivc0")]
 layout_mode = 2
-
-[node name="Left" type="Control" parent="InventoryControl/ScrollContainer/VBoxContainer/Control"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 1
-
-[node name="IconContainer" type="MarginContainer" parent="InventoryControl/ScrollContainer/VBoxContainer/Control/Left"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
-
-[node name="Icon" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer/Control/Left/IconContainer"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-color = Color(1, 0.0705882, 1, 1)
-
-[node name="TextureRect" type="TextureRect" parent="InventoryControl/ScrollContainer/VBoxContainer/Control/Left/IconContainer"]
-layout_mode = 2
-texture = ExtResource("2_70a47")
-
-[node name="QuantityContainer" type="MarginContainer" parent="InventoryControl/ScrollContainer/VBoxContainer/Control/Left"]
-custom_minimum_size = Vector2(8, 8)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -14.0
-offset_top = -12.0
-offset_right = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 8
-size_flags_vertical = 8
-
-[node name="Quantity" type="Label" parent="InventoryControl/ScrollContainer/VBoxContainer/Control/Left/QuantityContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "x16"
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="Right" type="Control" parent="InventoryControl/ScrollContainer/VBoxContainer/Control"]
-layout_mode = 1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-
-[node name="LabelContainer" type="MarginContainer" parent="InventoryControl/ScrollContainer/VBoxContainer/Control/Right"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="InventoryControl/ScrollContainer/VBoxContainer/Control/Right/LabelContainer"]
-layout_mode = 2
-text = "Wood"
 
 [node name="ColorRect4" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 20)
@@ -175,6 +91,20 @@ layout_mode = 2
 [node name="ColorRect15" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="InventoryControl/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Inventory"
+horizontal_alignment = 1
 
 [node name="CraftingControl" type="Control" parent="."]
 layout_mode = 1

@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://baimwd3yd2jb1"]
+
+[ext_resource type="Script" path="res://project/scenes/ui/inventory/inventory_item_ui.gd" id="1_ktpok"]
+[ext_resource type="Texture2D" uid="uid://vij0s66h6y84" path="res://project/textures/items/wood.png" id="1_nqq8f"]
+
+[node name="InventoryItem" type="Button"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "jklkjl"
+script = ExtResource("1_ktpok")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="IconContainer" type="MarginContainer" parent="Left"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+
+[node name="TextureRect" type="TextureRect" parent="Left/IconContainer"]
+layout_mode = 2
+texture = ExtResource("1_nqq8f")
+
+[node name="QuantityContainer" type="MarginContainer" parent="Left"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -12.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Quantity" type="Label" parent="Left/QuantityContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "x16"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Right" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelContainer" type="MarginContainer" parent="Right"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Right/LabelContainer"]
+layout_mode = 2
+text = "Wood"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
