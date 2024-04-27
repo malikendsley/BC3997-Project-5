@@ -44,5 +44,8 @@ func has_item(item: String) -> bool:
 
 # Returns true if item is craftable with the items the user currently possesses, false otherwise.
 func can_craft(item: String) -> bool:
-	# TODO: Implement this function
+	var recipe:Dictionary = Items.get_recipe(item)
+	for i in recipe:
+		if get_quantity(i) < recipe[i]:
+			return false
 	return true

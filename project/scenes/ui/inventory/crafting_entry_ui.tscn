@@ -1,0 +1,140 @@
+[gd_scene load_steps=5 format=3 uid="uid://bykc7nbi6caib"]
+
+[ext_resource type="Script" path="res://project/scenes/ui/inventory/crafting_entry_ui.gd" id="1_2d2j8"]
+[ext_resource type="Texture2D" uid="uid://xda8i5hj4ev2" path="res://project/textures/items/stone_sword.png" id="1_5tx8o"]
+[ext_resource type="Texture2D" uid="uid://c15pbndt20j7k" path="res://project/textures/items/stone.png" id="2_4pa13"]
+[ext_resource type="PackedScene" uid="uid://bs2rhnmpwrmec" path="res://project/scenes/ui/inventory/crafting_required_item_ui.tscn" id="2_ye83j"]
+
+[node name="CraftingEntry" type="Control"]
+custom_minimum_size = Vector2(120, 20)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2d2j8")
+
+[node name="InfoSide" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="InfoSide"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="IconContainer" type="MarginContainer" parent="InfoSide/Left"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+
+[node name="TextureRect" type="TextureRect" parent="InfoSide/Left/IconContainer"]
+layout_mode = 2
+texture = ExtResource("1_5tx8o")
+
+[node name="Right" type="Control" parent="InfoSide"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelContainer" type="MarginContainer" parent="InfoSide/Right"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="InfoSide/Right/LabelContainer"]
+layout_mode = 2
+text = "Sword"
+
+[node name="CraftingSide" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+
+[node name="CraftingRequiredItem" parent="HBoxContainer" instance=ExtResource("2_ye83j")]
+layout_mode = 2
+
+[node name="CraftingRequiredItem2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(16, 20)
+layout_mode = 2
+
+[node name="IconContainer" type="MarginContainer" parent="HBoxContainer/CraftingRequiredItem2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = -2.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/CraftingRequiredItem2/IconContainer"]
+layout_mode = 2
+texture = ExtResource("2_4pa13")
+
+[node name="QuantityContainer" type="MarginContainer" parent="HBoxContainer/CraftingRequiredItem2"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -12.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Quantity" type="Label" parent="HBoxContainer/CraftingRequiredItem2/QuantityContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "x2"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="ItemButton" type="Button" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]
