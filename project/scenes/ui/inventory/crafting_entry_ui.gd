@@ -60,6 +60,9 @@ func initialize(my_item_id:String, my_can_craft: bool):
 	can_craft = my_can_craft
 	item_name = Items.get_item_name(my_item_id)
 	update_labels_and_textures()
+	
+	if not can_craft:
+		entry_button.disabled = true
 
 	remove_children(recipe_container)
 	gen_recipe()
