@@ -23,6 +23,14 @@ func _ready():
 	inventory_items_container = get_node("InventoryControl/ScrollContainer/InventoryItemsContainer")
 	crafting_entries_container = get_node("CraftingControl/ScrollContainer/CraftingEntriesContainer")
 	get_inventory_node()
+	
+	# ADDING ITEMS TO TEST
+	inventory.add_item("wood", 64)
+	inventory.add_item("stone", 32)
+	inventory.add_item("fur", 10)
+	inventory.add_item("bone", 10)
+	inventory.add_item("slime", 10)
+	inventory.add_item("bear_claw", 10)
 
 func add_items_node(item:String, quantity: int):
 	var item_node_instance = item_scene.instantiate()

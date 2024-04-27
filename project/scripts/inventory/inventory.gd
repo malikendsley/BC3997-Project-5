@@ -51,5 +51,11 @@ func can_craft(item: String) -> bool:
 	return true
 
 func craft(item: String):
+	if not can_craft(item):
+		return
+	
+	var recipe:Dictionary = Items.get_recipe(item)
+	for i in recipe:
+		remove_item(i, recipe[i])
 	add_item(item)
 	return
