@@ -1,20 +1,14 @@
 extends Control
 
+var item_button:BaseButton = null
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	item_button = get_node("ItemButton")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 
-
-func _on_pressed():
-	print("Button Pressed")
-
-
-func _on_button_down():
-	print("Button down")
+func _on_item_button_pressed():
+	print("Button pressed")

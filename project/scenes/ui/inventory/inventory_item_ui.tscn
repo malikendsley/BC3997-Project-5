@@ -1,23 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://baimwd3yd2jb1"]
+[gd_scene load_steps=3 format=3 uid="uid://40v1a0ynmqyu"]
 
 [ext_resource type="Script" path="res://project/scenes/ui/inventory/inventory_item_ui.gd" id="1_ktpok"]
 [ext_resource type="Texture2D" uid="uid://vij0s66h6y84" path="res://project/textures/items/wood.png" id="1_nqq8f"]
 
-[node name="InventoryItem" type="Button"]
-custom_minimum_size = Vector2(20, 20)
+[node name="InventoryItem" type="Control"]
+custom_minimum_size = Vector2(70, 20)
+layout_mode = 3
+anchors_preset = 0
 offset_right = 8.0
 offset_bottom = 8.0
-toggle_mode = true
-text = "jklkjl"
 script = ExtResource("1_ktpok")
-
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Left" type="Control" parent="."]
 custom_minimum_size = Vector2(20, 20)
@@ -89,5 +81,17 @@ grow_vertical = 2
 layout_mode = 2
 text = "Wood"
 
-[connection signal="button_down" from="." to="." method="_on_button_down"]
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="ItemButton" type="Button" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]

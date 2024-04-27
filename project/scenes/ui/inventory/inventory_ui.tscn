@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8stli0xte3of"]
 
 [ext_resource type="Script" path="res://project/scenes/ui/inventory/inventory_ui_controller.gd" id="1_cubpl"]
-[ext_resource type="PackedScene" uid="uid://baimwd3yd2jb1" path="res://project/scenes/ui/inventory/inventory_item_ui.tscn" id="2_3ivc0"]
+[ext_resource type="PackedScene" uid="uid://40v1a0ynmqyu" path="res://project/scenes/ui/inventory/inventory_item_ui.tscn" id="2_j4uwy"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -26,72 +26,6 @@ anchor_right = 0.4
 anchor_bottom = 1.0
 offset_right = -10.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="InventoryControl"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_bottom = -9.99999
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryControl/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="InventoryItem" parent="InventoryControl/ScrollContainer/VBoxContainer" instance=ExtResource("2_3ivc0")]
-layout_mode = 2
-
-[node name="ColorRect4" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect5" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect6" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect7" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect8" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect9" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect10" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect11" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect12" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect13" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect14" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
-[node name="ColorRect15" type="ColorRect" parent="InventoryControl/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-
 [node name="MarginContainer" type="MarginContainer" parent="InventoryControl"]
 layout_mode = 1
 anchors_preset = -1
@@ -105,6 +39,23 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Inventory"
 horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InventoryControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryControl/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventoryItem" parent="InventoryControl/ScrollContainer/VBoxContainer" instance=ExtResource("2_j4uwy")]
+layout_mode = 2
 
 [node name="CraftingControl" type="Control" parent="."]
 layout_mode = 1
