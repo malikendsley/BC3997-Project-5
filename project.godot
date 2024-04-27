@@ -20,7 +20,6 @@ Items="*res://project/scripts/inventory/items.gd"
 
 Items="*res://project/scripts/inventory/items.gd"
 InputBuffer="*res://project/scripts/mechanics/input_buffer.gd"
-Inventory="*res://project/scripts/inventory/inventory.gd"
 
 [display]
 
