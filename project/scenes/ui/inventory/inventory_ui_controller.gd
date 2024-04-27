@@ -32,6 +32,7 @@ func add_items_node(item:String, quantity: int):
 func add_crafting_node(item:String, can_craft: bool):
 	var crafting_entry_instance = crafting_entry_scene.instantiate()
 	crafting_entry_instance.initialize(item, can_craft)
+	crafting_entry_instance.inventory_changed.connect(refresh_inventory)
 	crafting_entries_container.add_child(crafting_entry_instance)
 
 func gen_items_list():

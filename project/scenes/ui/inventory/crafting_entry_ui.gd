@@ -1,7 +1,11 @@
 extends Control
 
+signal inventory_changed
+
 const texture_template = "res://project/textures/items/%s.png"
 var crafting_item_scene = preload("res://project/scenes/ui/inventory/crafting_required_item_ui.tscn")
+
+var player_inventory_node = null
 
 var recipe_container:BoxContainer = null
 var entry_button:BaseButton = null
@@ -13,9 +17,20 @@ var item_id: String = ""
 var item_name: String = ""
 var can_craft:bool = false
 
+func _ready():
+	player_inventory_node = get_player_inventory_node()
+
+func get_player_inventory_node():
+	var node_list = get_tree().get_nodes_in_group("player")
+	if len(node_list) <= 0 or len(node_list) > 1:
+		print("inventory_ui_controller.gd error: Unexpected (non-1) number of nodes in group 'player'")
+		return null
+	var player_node:CharacterBody2D = node_list[0]
+	return player_node.get_node("Inventory")
+
 func get_child_nodes():
 	recipe_container = get_node("HBoxContainer")
-	entry_button = get_node("ItemButton")
+	entry_button = get_node("EntryButton")
 	item_label = get_node("InfoSide/Right/LabelContainer/Label")
 	item_texture = get_node("InfoSide/Left/IconContainer/TextureRect")
 
@@ -43,12 +58,12 @@ func initialize(my_item_id:String, my_can_craft: bool):
 	get_child_nodes()
 	item_id = my_item_id
 	can_craft = my_can_craft
-	print(can_craft)
 	item_name = Items.get_item_name(my_item_id)
 	update_labels_and_textures()
 
 	remove_children(recipe_container)
 	gen_recipe()
 
-func _on_item_button_pressed():
-	pass
+func _on_entry_button_pressed():
+	player_inventory_node.craft(item_id)
+	inventory_changed.emit()

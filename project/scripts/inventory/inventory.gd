@@ -49,3 +49,7 @@ func can_craft(item: String) -> bool:
 		if get_quantity(i) < recipe[i]:
 			return false
 	return true
+
+func craft(item: String):
+	add_item(item)
+	return

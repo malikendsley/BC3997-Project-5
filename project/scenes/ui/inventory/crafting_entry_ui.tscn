@@ -124,7 +124,7 @@ text = "x2"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="ItemButton" type="Button" parent="."]
+[node name="EntryButton" type="Button" parent="."]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -137,4 +137,4 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="EntryButton" to="." method="_on_entry_button_pressed"]
