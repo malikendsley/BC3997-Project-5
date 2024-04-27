@@ -33,7 +33,11 @@
 			"name": "Slime",
 			"type": "Resource",
 			"recipe": null,
-			"is_equippable": false
+			"is_equippable": false,
+			"effects": {
+				"heal": "2",
+				"food": "10"
+			}
 		},
 		"bear_claw": {
 			"id": "bear_claw",

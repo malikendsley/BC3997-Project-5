@@ -49,6 +49,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InventoryScreen" parent="Control" instance=ExtResource("2_ecsfs")]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 
 [node name="HPProgressBar" type="TextureProgressBar" parent="Control"]

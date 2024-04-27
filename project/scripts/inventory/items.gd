@@ -1,8 +1,8 @@
 extends Node
 
 # Enum for item types
-enum Type {UNDEFINED, 
-	RESOURCE, 
+enum Type {UNDEFINED,
+	RESOURCE,
 	WEAPON,
 	ITEM}
 
@@ -14,7 +14,8 @@ class Item:
 	var recipe: Dictionary = {}
 	var is_craftable: bool = false
 	var is_equippable: bool = false
-	
+	var is_consumable: bool = false
+	var effects = {}
 	func _init():
 		pass
 	
@@ -25,29 +26,29 @@ class Item:
 @export var items: Dictionary = {}
 
 # Returns true if item is valid in the game, false otherwise.
-func is_item(item:String) -> bool:
+func is_item(item: String) -> bool:
 	return items.has(item)
 
 # Gets the item's printable name from the item id.
-func get_item_name(item:String):
+func get_item_name(item: String):
 	if !is_item(item):
 		return null
 	return items[item].item_name
 
 # Gets the item's type
-func get_type(item:String):
+func get_type(item: String):
 	if !is_item(item):
 		return null
 	return items[item].type
 
 # Gets the item's recipe
-func get_recipe(item:String):
+func get_recipe(item: String):
 	if !is_item(item):
 		return null
 	return items[item].recipe
 
 # Returns true if item is craftable, false otherwise.
-func is_craftable(item:String):
+func is_craftable(item: String):
 	if !is_item(item):
 		return null
 	return items[item].is_craftable
@@ -58,10 +59,16 @@ func is_equippable(item: String):
 		return null
 	return items[item].is_equippable
 
+# Returns true if the item is consumable, false otherwise.
+func is_consumable(item: String):
+	if !is_item(item):
+		return null
+	return items[item].is_consumable
+
 func _ready():
 	load_items()
 	
-func type_str_to_enum(s:String):
+func type_str_to_enum(s: String):
 	var type_enum = Type.get(s.to_upper())
 	if type_enum == null:
 		return Type.UNDEFINED
@@ -88,6 +95,9 @@ func create_item_object(json_data):
 	item_object.recipe = get_recipe_dictionary(json_data["recipe"])
 	item_object.is_craftable = (json_data["recipe"] != null)
 	item_object.is_equippable = json_data["is_equippable"]
+	item_object.is_consumable = json_data.has("effects")
+	if item_object.is_consumable:
+		item_object.effects = json_data["effects"]
 	
 	return item_object
 

@@ -16,6 +16,7 @@ func add_item(item: String, quantity: int=1) -> int:
 		items[item] += quantity
 	else:
 		items[item] = quantity
+	refresh_inventory.emit()
 	return quantity
 
 # Remove an item by item id ("wood", "stone", etc.) from the player's inventory.
@@ -32,6 +33,7 @@ func remove_item(item: String, quantity: int=1) -> int:
 			items.erase(item)
 			return 0
 		return items[item]
+	refresh_inventory.emit()
 	return - 1
 
 # Gets the number of some item currently in the user's inventory
@@ -68,4 +70,18 @@ func craft(item: String) -> bool:
 	for i in recipe:
 		remove_item(i, recipe[i])
 	add_item(item)
+	refresh_inventory.emit()
 	return true
+
+# Get a frequency table of all items in this inventory
+func get_all_items() -> Dictionary:
+	var all_items: Dictionary = {}
+	for i in items:
+		all_items[i] = get_quantity(i)
+	return all_items
+
+# Drop this inventory onto the ground
+# TODO: Separate into a new component?
+func drop_inventory_on_ground():
+	for i in items:
+		print("Dropping ", i, " x", items[i])

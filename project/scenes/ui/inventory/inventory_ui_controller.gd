@@ -1,16 +1,15 @@
 extends Node
 
-var time_since_change: float = 0
-const BUTTON_DELAY: float = 0.5
-
-@onready var inventory_items_container: BoxContainer = %InventoryItemsContainer
-@onready var crafting_entries_container: BoxContainer = %CraftingEntriesContainer
+var inventory_items_container: BoxContainer = null
+var crafting_entries_container: BoxContainer = null
 var item_scene = preload ("res://project/scenes/ui/inventory/inventory_item_ui.tscn")
 var crafting_entry_scene = preload ("res://project/scenes/ui/inventory/crafting_entry_ui.tscn")
 var inventory: Inventory
 
 func _ready():
 	self.visible = false
+	inventory_items_container = %InventoryItemsContainer
+	crafting_entries_container = %CraftingEntriesContainer
 	inventory = Player.get_singleton().inventory
 	inventory.refresh_inventory.connect(refresh_inventory)
 	
@@ -67,23 +66,6 @@ func refresh_inventory():
 	remove_children(crafting_entries_container)
 	gen_items_list()
 	gen_crafting_list()
-
-func _process(delta: float):
-	time_since_change += delta
-	
-	if Input.is_action_pressed("close_crafting"):
-		time_since_change = BUTTON_DELAY + 0.1
-		close_inventory_screen()
-	else:
-		if (time_since_change <= BUTTON_DELAY):
-			return
-		if Input.is_action_pressed("open_crafting"):
-			if self.visible:
-				time_since_change = 0.0
-				close_inventory_screen()
-			else:
-				time_since_change = 0.0
-				open_inventory_screen()
 
 func close_inventory_screen():
 	self.visible = false

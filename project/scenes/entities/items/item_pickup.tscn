@@ -9,10 +9,13 @@
 
 [node name="ItemPickup" type="CharacterBody2D"]
 script = ExtResource("1_0efjb")
+item_id = null
+quantity = null
 
 [node name="Sprites" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+[node name="ItemSprite" type="Sprite2D" parent="Sprites"]
+unique_name_in_owner = true
 texture = ExtResource("1_boncg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -28,7 +28,8 @@ offset_top = 2.0
 offset_right = -2.0
 offset_bottom = -2.0
 
-[node name="TextureRect" type="TextureRect" parent="Left/IconContainer"]
+[node name="ItemTexture" type="TextureRect" parent="Left/IconContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_nqq8f")
 
@@ -49,6 +50,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="Quantity" type="Label" parent="Left/QuantityContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "x16"
@@ -78,10 +80,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Right/LabelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Wood"
 
 [node name="ItemButton" type="Button" parent="."]
+unique_name_in_owner = true
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1

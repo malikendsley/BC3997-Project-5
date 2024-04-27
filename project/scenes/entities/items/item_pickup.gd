@@ -5,8 +5,7 @@ const texture_template = "res://project/textures/items/%s.png"
 @export var item_id: String = "wood"
 @export var quantity: int = 1
 
-var item_texture: Sprite2D = null
-var player_inventory_node = null
+@onready var item_texture: Sprite2D = %ItemSprite
 
 const BOUNCE_AMPLITUDE = 10
 const TIME_MULTIPLIER = 10
@@ -21,9 +20,12 @@ func _ready():
 		print("item_pickup: Invalid quantity ", quantity)
 		return
 
-	item_texture = get_node("Sprites/Sprite2D")
+	update_item(item_id)
+
+# Changes the item's ID (what it is) and updates the texture (how it looks)
+func update_item(new_id: String):
+	self.item_id = new_id
 	item_texture.texture = load(texture_template % item_id)
-	player_inventory_node = Player.get_singleton().inventory
 
 func _physics_process(delta):
 	# Bounce up and down.
@@ -31,9 +33,7 @@ func _physics_process(delta):
 	velocity.y = sin(curr_time * TIME_MULTIPLIER) * BOUNCE_AMPLITUDE
 	
 	move_and_slide()
-
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
-		player_inventory_node.add_item(item_id, quantity)
-		player_inventory_node.refresh_inventory.emit()
+	if body is Player:
+		(body as Player).inventory.add_item(item_id, quantity)
 		queue_free()

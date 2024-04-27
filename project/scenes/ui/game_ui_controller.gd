@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var hp_progress_bar: TextureProgressBar = %HPProgressBar
 @onready var energy_progress_bar: TextureProgressBar = %EnergyProgressBar
 @onready var icon: Sprite2D = %Icon
+@onready var inventory_screen = %InventoryScreen
 
 var max_hp: float = 0
 var max_energy: float = 0

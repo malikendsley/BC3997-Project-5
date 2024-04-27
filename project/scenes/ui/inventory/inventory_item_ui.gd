@@ -2,7 +2,7 @@ extends Control
 
 const texture_template = "res://project/textures/items/%s.png"
 
-var item_button:BaseButton = null
+var item_button: BaseButton = null
 
 var item_label: Label = null
 var item_quantity: Label = null
@@ -14,17 +14,17 @@ var quantity: int = 0
 var is_equippable: bool = false
 
 func get_child_nodes():
-	item_button = get_node("ItemButton")
-	item_label = get_node("Right/LabelContainer/Label")
-	item_quantity = get_node("Left/QuantityContainer/Quantity")
-	item_texture = get_node("Left/IconContainer/TextureRect")
+	item_button = %ItemButton
+	item_label = %Label
+	item_quantity = %Quantity
+	item_texture = %ItemTexture
 
 func update_labels_and_textures():
 	item_label.text = item_name
 	item_quantity.text = "x%d" % quantity
 	item_texture.texture = load(texture_template % item_id)
 
-func initialize(my_item_id:String, my_quantity:int):
+func initialize(my_item_id: String, my_quantity: int):
 	get_child_nodes()
 	item_id = my_item_id
 	item_name = Items.get_item_name(my_item_id)
@@ -33,4 +33,9 @@ func initialize(my_item_id:String, my_quantity:int):
 	update_labels_and_textures()
 
 func _on_item_button_pressed():
-	pass
+	if Items.is_equippable(item_id):
+		print("Selected equippable item: %s" % item_id)
+	elif Items.is_consumable(item_id):
+		print("Selected consumable item: %s" % item_id)
+	else:
+		print("Selected item: %s" % item_id)
