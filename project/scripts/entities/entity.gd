@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var hurt_area_component: HurtComponent = %HurtComponent
 @onready var body_sprite: AnimatedSprite2D = %BodySprite
 @onready var sfx_player: AnimationPlayer = %SFXPlayer
+@onready var inventory: Inventory = %Inventory
 #endregion
 
 func _ready() -> void:

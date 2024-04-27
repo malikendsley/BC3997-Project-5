@@ -29,7 +29,8 @@ func _ready():
 	get_script().set_meta(&"singleton", self) # set as singleton
 	add_to_group("player") # in case needed
 	stat_component.health_changed.connect(handle_hp_change)
-	game_ui.initialize(stat_component.health, max_energy)
+    # initialize UI, defer becuase UI isn't ready yet
+	game_ui.call_deferred("initialize", stat_component.health, max_energy)
 
 func _process(delta: float):
 	

@@ -28,12 +28,3 @@ func set_hp(new_hp: float) -> void:
 
 func set_energy(new_energy: float) -> void:
 	energy_progress_bar.value = new_energy
-
-# TODO: For testing, called by a button, remove later
-func _damage_all_enemies():
-	print("damaging all enemies")
-	# get all entities and hit them with player damage, won't hurt the player
-	for enemy in get_tree().get_nodes_in_group("entities"):
-		print("Entity: ", enemy.name)
-		var damage_instance = DamageInstance.new(1, DamageInstance.Faction.PLAYER, self, Vector2(0, 0))
-		enemy.hurt_component.send_damage(damage_instance)

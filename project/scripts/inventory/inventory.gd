@@ -1,3 +1,4 @@
+class_name Inventory
 extends Node
 
 signal refresh_inventory
@@ -6,10 +7,10 @@ signal refresh_inventory
 
 # Add an item by item id ("wood", "stone", etc.) to the player's inventory.
 # Returns the number of that item the player has after added, -1 if unsuccessful.
-func add_item(item:String, quantity:int = 1) -> int:
+func add_item(item: String, quantity: int=1) -> int:
 	if !Items.is_item(item):
 		print("add_item: invalid item ", item)
-		return -1
+		return - 1
 
 	if items.has(item):
 		items[item] += quantity
@@ -20,10 +21,10 @@ func add_item(item:String, quantity:int = 1) -> int:
 # Remove an item by item id ("wood", "stone", etc.) from the player's inventory.
 # Returns the number of that item the player has after removed, 
 # -1 if unsuccessful or player does not have enough of that item to remove.
-func remove_item(item:String, quantity: int = 1) -> int:
+func remove_item(item: String, quantity: int=1) -> int:
 	if !Items.is_item(item):
 		print("remove_item: invalid item ", item)
-		return -1
+		return - 1
 	
 	if items.has(item) and items[item] >= quantity:
 		items[item] -= quantity
@@ -31,13 +32,13 @@ func remove_item(item:String, quantity: int = 1) -> int:
 			items.erase(item)
 			return 0
 		return items[item]
-	return -1
+	return - 1
 
 # Gets the number of some item currently in the user's inventory
-func get_quantity(item:String) -> int:
+func get_quantity(item: String) -> int:
 	if !Items.is_item(item):
 		print("get_quantity: invalid item ", item)
-		return -1
+		return - 1
 	return items.get(item, 0)
 
 # Returns true if a user has at least one item, false otherwise
@@ -49,7 +50,7 @@ func can_craft(item: String) -> bool:
 	if !Items.is_item(item):
 		print("can_craft: invalid item ", item)
 		return false
-	var recipe:Dictionary = Items.get_recipe(item)
+	var recipe: Dictionary = Items.get_recipe(item)
 	for i in recipe:
 		if get_quantity(i) < recipe[i]:
 			return false
@@ -63,7 +64,7 @@ func craft(item: String) -> bool:
 	if not can_craft(item):
 		return false
 	
-	var recipe:Dictionary = Items.get_recipe(item)
+	var recipe: Dictionary = Items.get_recipe(item)
 	for i in recipe:
 		remove_item(i, recipe[i])
 	add_item(item)
