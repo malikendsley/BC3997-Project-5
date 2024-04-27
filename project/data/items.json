@@ -1,25 +1,75 @@
 {
-  "items": {
-	"wood": {
-	  "id": "wood",
-	  "name": "Wood",
-	  "type": "Resource",
-	  "recipe": null,
-	  "is_equippable": false
-	},
-	"stone": {
-	  "id": "stone",
-	  "name": "Stone",
-	  "type": "Resource",
-	  "recipe": null,
-	  "is_equippable": false
-	},
-	"stone_sword": {
-	  "id": "stone_sword",
-	  "name": "Stone Sword",
-	  "type": "Weapon",
-	  "recipe": ["stone", "stone", "wood"],
-	  "is_equippable": true
+	"items": {
+		"wood": {
+			"id": "wood",
+			"name": "Wood",
+			"type": "Resource",
+			"recipe": null,
+			"is_equippable": false
+		},
+		"stone": {
+			"id": "stone",
+			"name": "Stone",
+			"type": "Resource",
+			"recipe": null,
+			"is_equippable": false
+		},
+		"fur": {
+			"id": "fur",
+			"name": "Fur",
+			"type": "Resource",
+			"recipe": null,
+			"is_equippable": false
+		},
+		"bone": {
+			"id": "bone",
+			"name": "Bone",
+			"type": "Resource",
+			"recipe": null,
+			"is_equippable": false
+		},
+		"slime": {
+			"id": "slime",
+			"name": "Slime",
+			"type": "Resource",
+			"recipe": null,
+			"is_equippable": false
+		},
+		"bear_claw": {
+			"id": "bear_claw",
+			"name": "Bear Claw",
+			"type": "Resource",
+			"recipe": null,
+			"is_equippable": false
+		},
+		"stone_sword": {
+			"id": "stone_sword",
+			"name": "Stone Sword",
+			"type": "Weapon",
+			"recipe": [
+				"stone",
+				"stone",
+				"wood"
+			],
+			"is_equippable": true
+		},
+		"raft": {
+			"id": "raft",
+			"name": "Raft",
+			"type": "Item",
+			"recipe": [
+				"wood",
+				"wood",
+				"wood",
+				"stone",
+				"stone",
+				"stone",
+				"fur",
+				"fur",
+				"bone",
+				"bone"
+			],
+			"is_equippable": true
+		}
 	}
-  }
 }

@@ -72,7 +72,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.290196, 0.247059, 0.498039)
+color = Color(0.368301, 0.389335, 0.363003, 0.498039)
 
 [node name="MarginContainer" type="MarginContainer" parent="CraftingControl"]
 layout_mode = 1
