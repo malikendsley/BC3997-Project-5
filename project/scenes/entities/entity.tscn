@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://project/scripts/components/hurt_component.gd" id="2_03hgm"]
 [ext_resource type="Script" path="res://project/scripts/inventory/inventory.gd" id="4_uvo7b"]
 
-[sub_resource type="Shader" id="Shader_bub4l"]
+[sub_resource type="Shader" id="Shader_3utgm"]
 code = "shader_type canvas_item;
 
 uniform bool active = false;
@@ -22,8 +22,8 @@ void fragment() {
 	COLOR.a = prev_color.a;
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ey8je"]
-shader = SubResource("Shader_bub4l")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bi7gv"]
+shader = SubResource("Shader_3utgm")
 shader_parameter/active = false
 shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 
@@ -71,7 +71,7 @@ script = ExtResource("1_kh6d5")
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="Sprites"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_ey8je")
+material = SubResource("ShaderMaterial_bi7gv")
 
 [node name="MoveBox" type="CollisionShape2D" parent="."]
 
