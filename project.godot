@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Design Project 5"
-run/main_scene="res://project/game.tscn"
+run/main_scene="res://project/scenes/test/testscene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://project/icon.svg"
 Items="*res://project/scripts/inventory/items.gd"
@@ -20,7 +20,6 @@ Items="*res://project/scripts/inventory/items.gd"
 
 Items="*res://project/scripts/inventory/items.gd"
 InputBuffer="*res://project/scripts/mechanics/input_buffer.gd"
-Inventory="*res://project/scripts/inventory/inventory.gd"
 
 [display]
 
@@ -69,7 +68,10 @@ move_right={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
+2d_physics/layer_4="items"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
