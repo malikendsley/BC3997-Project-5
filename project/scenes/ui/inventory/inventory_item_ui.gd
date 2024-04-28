@@ -1,4 +1,7 @@
+class_name InventoryItem
 extends Control
+
+signal item_selected(item_id: String)
 
 const texture_template = "res://project/textures/items/%s.png"
 
@@ -33,9 +36,4 @@ func initialize(my_item_id: String, my_quantity: int):
 	update_labels_and_textures()
 
 func _on_item_button_pressed():
-	if Items.is_equippable(item_id):
-		print("Selected equippable item: %s" % item_id)
-	elif Items.is_consumable(item_id):
-		print("Selected consumable item: %s" % item_id)
-	else:
-		print("Selected item: %s" % item_id)
+	item_selected.emit(item_id)

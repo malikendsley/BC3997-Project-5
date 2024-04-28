@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+# TODO: Could pull these strings into a separate file for easier maintenance
 const texture_template = "res://project/textures/items/%s.png"
 
 @export var item_id: String = "wood"

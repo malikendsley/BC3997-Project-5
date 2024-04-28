@@ -2,7 +2,7 @@
 class_name Player
 extends Entity
 
-@onready var equipped_item: Equipment = %Equipment
+@onready var equipment_component: EquipmentComponent = %Equipment
 
 @export_category("References")
 @export var game_ui: GameUIController
@@ -35,8 +35,9 @@ func _ready():
 	get_script().set_meta(&"singleton", self) # set as singleton
 	add_to_group("player") # in case needed
 	stat_component.health_changed.connect(handle_hp_change)
-	# initialize UI, defer becuase UI isn't ready yet
+	# TODO: This seems cyclic, maybe fix _ready() calls?
 	game_ui.call_deferred("initialize", stat_component.health, max_energy)
+	equipment_component.initialize(game_ui)
 
 func _process(delta: float):
 	

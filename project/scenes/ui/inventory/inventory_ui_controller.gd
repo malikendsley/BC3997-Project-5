@@ -1,4 +1,7 @@
+class_name InventoryUIController
 extends Node
+
+signal item_selected(item_id: String)
 
 var inventory_items_container: BoxContainer = null
 var crafting_entries_container: BoxContainer = null
@@ -12,20 +15,13 @@ func _ready():
 	crafting_entries_container = %CraftingEntriesContainer
 	inventory = Player.get_singleton().inventory
 	inventory.refresh_inventory.connect(refresh_inventory)
-	
-	# ADDING ITEMS TO TEST
-	#inventory.add_item("wood", 64)
-	#inventory.add_item("stone", 32)
-	#inventory.add_item("fur", 10)
-	#inventory.add_item("bone", 10)
-	#inventory.add_item("slime", 10)
-	#inventory.add_item("bear_claw", 10)
 
 func add_items_node(item: String, quantity: int):
-	var item_node_instance = item_scene.instantiate()
+	var item_node_instance = item_scene.instantiate() as InventoryItem
 	item_node_instance.initialize(item, quantity)
 	inventory_items_container.add_child(item_node_instance)
-	
+	item_node_instance.item_selected.connect(on_item_selected)
+
 func add_crafting_node(item: String, can_craft: bool):
 	var crafting_entry_instance = crafting_entry_scene.instantiate()
 	crafting_entry_instance.initialize(item, can_craft)
@@ -55,7 +51,7 @@ func gen_crafting_list():
 		if inventory.can_craft(item_id):
 			continue
 		add_crafting_node(item_id, false)
-
+	
 func remove_children(parent):
 	for n in parent.get_children():
 		parent.remove_child(n)
@@ -73,3 +69,6 @@ func close_inventory_screen():
 func open_inventory_screen():
 	refresh_inventory()
 	self.visible = true
+
+func on_item_selected(item_name: String):
+	item_selected.emit(item_name)
