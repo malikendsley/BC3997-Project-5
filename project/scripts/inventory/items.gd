@@ -16,8 +16,7 @@ class Item:
 	var is_equippable: bool = false
 	var is_consumable: bool = false
 	var effects = {}
-	func _init():
-		pass
+	var stats = {}
 	
 	func _to_string():
 		return "id: " + id + ", name: " + item_name + ", type: " + str(Type.keys()[type]) + ", recipe: " + str(recipe) + ", is_craftable: " + str(is_craftable) + ", is_equippable: " + str(is_equippable)
@@ -65,6 +64,16 @@ func is_consumable(item: String):
 		return null
 	return items[item].is_consumable
 
+func get_effects(item: String):
+	if !is_item(item) or !items[item].is_consumable:
+		return null
+	return items[item].effects
+
+func get_stats(item: String):
+	if !is_item(item) or !items[item].is_equippable:
+		return null
+	return items[item].stats
+
 func _ready():
 	load_items()
 	
@@ -95,6 +104,8 @@ func create_item_object(json_data):
 	item_object.recipe = get_recipe_dictionary(json_data["recipe"])
 	item_object.is_craftable = (json_data["recipe"] != null)
 	item_object.is_equippable = json_data["is_equippable"]
+	if item_object.is_equippable:
+		item_object.stats = json_data["stats"]
 	item_object.is_consumable = json_data.has("effects")
 	if item_object.is_consumable:
 		item_object.effects = json_data["effects"]

@@ -1,3 +1,4 @@
+class_name CraftingEntry
 extends Control
 
 signal inventory_changed
