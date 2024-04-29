@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://6pvqeojxe07v"]
+
+[ext_resource type="PackedScene" uid="uid://bxumtieeccywb" path="res://project/scenes/entities/enemy/enemy.tscn" id="1_h42vf"]
+[ext_resource type="Script" path="res://project/scenes/entities/enemy/enemy.gd" id="2_8i6in"]
+[ext_resource type="Texture2D" uid="uid://cbj5ob3bmyggs" path="res://raw_art/asset_packs/village assets/Art/Characters/Slime/Slime_Idle.png" id="2_m0rv5"]
+[ext_resource type="Script" path="res://project/scripts/components/hit_area_component.gd" id="3_025i4"]
+[ext_resource type="Script" path="res://project/scripts/components/attack_modules/slime_attack.gd" id="5_tmuyd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lvrx"]
+atlas = ExtResource("2_m0rv5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw6bc"]
+atlas = ExtResource("2_m0rv5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6orah"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lvrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw6bc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trb3i"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovnpp"]
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_inhqc"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqvmv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7v1f"]
+
+[node name="Slime" node_paths=PackedStringArray("attack_module") instance=ExtResource("1_h42vf")]
+collision_mask = 0
+script = ExtResource("2_8i6in")
+enemy_id = "slime"
+aggro_range = 150.0
+deaggro_range = 200.0
+attack_range = 50.0
+move_speed = 100.0
+attack_time = 0.5
+cooldown_time = 0.5
+attack_module = NodePath("Components/SlimeAttack")
+
+[node name="BodySprite" parent="Sprites" index="0"]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_6orah")
+autoplay = "default"
+frame_progress = 0.16173
+
+[node name="MoveBox" parent="." index="1"]
+shape = SubResource("CircleShape2D_trb3i")
+
+[node name="StatComponent" parent="Components" index="0"]
+max_health = 10
+
+[node name="HurtComponent" parent="Components" index="1"]
+collision_layer = 4
+collision_mask = 0
+faction = 2
+
+[node name="CollisionShape2D" parent="Components/HurtComponent" index="0"]
+shape = SubResource("CircleShape2D_ovnpp")
+
+[node name="HitAreaComponent" type="Area2D" parent="Components" index="2"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_025i4")
+continuous = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitAreaComponent" index="0"]
+shape = SubResource("CircleShape2D_inhqc")
+
+[node name="AggroArea" type="Area2D" parent="Components" index="4"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="AggroCircle" type="CollisionShape2D" parent="Components/AggroArea" index="0"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_aqvmv")
+
+[node name="DeaggroArea" type="Area2D" parent="Components" index="5"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="DeaggroCircle" type="CollisionShape2D" parent="Components/DeaggroArea" index="0"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_n7v1f")
+
+[node name="SlimeAttack" type="Node2D" parent="Components" index="6"]
+script = ExtResource("5_tmuyd")
+lunge_distance = 30
+
+[connection signal="body_entered" from="Components/AggroArea" to="." method="_on_aggro_range_enter"]
+[connection signal="body_exited" from="Components/DeaggroArea" to="." method="_on_deaggro_range_exit"]

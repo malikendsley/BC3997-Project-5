@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqsv42vav7ulh"]
+
+[ext_resource type="Script" path="res://project/scenes/entities/items/item_pickup.gd" id="1_0efjb"]
+[ext_resource type="Texture2D" uid="uid://vij0s66h6y84" path="res://project/textures/items/wood.png" id="1_boncg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61u4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlm0y"]
+
+[node name="ItemPickup" type="CharacterBody2D" node_paths=PackedStringArray("item_texture")]
+script = ExtResource("1_0efjb")
+item_texture = NodePath("Sprites/ItemSprite")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="ItemSprite" type="Sprite2D" parent="Sprites"]
+unique_name_in_owner = true
+texture = ExtResource("1_boncg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_61u4p")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vlm0y")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

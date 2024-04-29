@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbyh3nd31pvvp"]
+
+[ext_resource type="Script" path="res://project/scripts/entities/entity.gd" id="1_kh6d5"]
+[ext_resource type="Script" path="res://project/scripts/components/stat_component.gd" id="1_x2fu7"]
+[ext_resource type="Script" path="res://project/scripts/components/hurt_component.gd" id="2_03hgm"]
+[ext_resource type="Script" path="res://project/scripts/inventory/inventory.gd" id="4_uvo7b"]
+
+[sub_resource type="Shader" id="Shader_3utgm"]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+uniform vec4 flash_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+void fragment() {
+	vec4 prev_color = texture(TEXTURE, UV);
+	vec4 new_color = prev_color;
+	if (active == true)
+	{
+		new_color = flash_color;
+	}
+	COLOR = new_color;
+	COLOR.a = prev_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bi7gv"]
+shader = SubResource("Shader_3utgm")
+shader_parameter/active = false
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_i0a1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/BodySprite:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8hy23"]
+resource_name = "flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/BodySprite:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_52a2m"]
+_data = {
+"RESET": SubResource("Animation_i0a1i"),
+"flash": SubResource("Animation_8hy23")
+}
+
+[node name="Entity" type="CharacterBody2D"]
+script = ExtResource("1_kh6d5")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="Sprites"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_bi7gv")
+
+[node name="MoveBox" type="CollisionShape2D" parent="."]
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="StatComponent" type="Node" parent="Components"]
+unique_name_in_owner = true
+script = ExtResource("1_x2fu7")
+
+[node name="HurtComponent" type="Area2D" parent="Components" node_paths=PackedStringArray("stat_component")]
+unique_name_in_owner = true
+script = ExtResource("2_03hgm")
+stat_component = NodePath("../StatComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtComponent"]
+
+[node name="Inventory" type="Node2D" parent="Components"]
+unique_name_in_owner = true
+script = ExtResource("4_uvo7b")
+
+[node name="SFXPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_52a2m")
+}
