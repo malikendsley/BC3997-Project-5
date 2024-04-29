@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpqslkmtld2ny"]
+[gd_scene load_steps=6 format=3 uid="uid://cpqslkmtld2ny"]
 
 [ext_resource type="TileSet" uid="uid://cggfhfql5sxiv" path="res://project/tilesets/base.tres" id="1_ruckg"]
 [ext_resource type="PackedScene" uid="uid://c482l4lqy7g1v" path="res://project/scenes/entities/player/player.tscn" id="2_wpnjs"]
 [ext_resource type="PackedScene" uid="uid://b48hx3yeervyu" path="res://project/scenes/ui/game_ui.tscn" id="3_wdykx"]
-[ext_resource type="PackedScene" uid="uid://6pvqeojxe07v" path="res://project/scenes/entities/enemy/test_enemy.tscn" id="4_5y67w"]
+[ext_resource type="PackedScene" uid="uid://6pvqeojxe07v" path="res://project/scenes/entities/enemy/slime.tscn" id="4_5y67w"]
 [ext_resource type="PackedScene" uid="uid://cqsv42vav7ulh" path="res://project/scenes/entities/items/item_pickup.tscn" id="5_fkgr2"]
-[ext_resource type="Script" path="res://project/scenes/entities/enemy/enemy.gd" id="5_logn1"]
 
 [node name="Testscene" type="Node2D"]
 
@@ -20,10 +19,6 @@ speed = 200
 acceleration = 1500
 
 [node name="GameUI" parent="." instance=ExtResource("3_wdykx")]
-
-[node name="TestEnemy" parent="." instance=ExtResource("4_5y67w")]
-position = Vector2(-65, 0)
-script = ExtResource("5_logn1")
 
 [node name="ItemPickups" type="Node2D" parent="."]
 
@@ -106,3 +101,6 @@ quantity = 1
 position = Vector2(80, 114)
 item_id = "bear_claw"
 quantity = 1
+
+[node name="Slime" parent="." instance=ExtResource("4_5y67w")]
+position = Vector2(-78, 6)

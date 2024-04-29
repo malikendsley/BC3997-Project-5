@@ -4,10 +4,6 @@ extends Entity
 
 @onready var equipment_component: EquipmentComponent = %Equipment
 @onready var anim_player: AnimationPlayer = %AnimationPlayer
-@onready var uphit: HitAreaComponent = %UpHit
-@onready var downhit: HitAreaComponent = %DownHit
-@onready var lefthit: HitAreaComponent = %LeftHit
-@onready var righthit: HitAreaComponent = %RightHit
 
 @export_category("References")
 @export var game_ui: GameUIController
@@ -47,7 +43,6 @@ func _process(delta: float):
 	input_vector.x = Input.get_axis("move_left", "move_right")
 	# godot's positive y is downward
 	input_vector.y = Input.get_axis("move_up", "move_down")
-
 	match current_state:
 		PlayerState.IDLE:
 			move(delta)
@@ -72,8 +67,7 @@ func _process(delta: float):
 
 			if InputBuffer.consume_mouse_click():
 				var target = get_global_mouse_position()
-				var direction = (target - global_position).normalized()
-				equipment_component.use_equipment(direction)
+				equipment_component.use_equipment(target)
 				current_state = PlayerState.ACTION
 
 		PlayerState.LOCKED:

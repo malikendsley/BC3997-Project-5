@@ -1,20 +1,32 @@
-# Currently only manages current equipped item
+# Manages the player's held item and its use
 
 class_name EquipmentComponent
-extends Node
+extends Node2D
+
+const texture_template = "res://project/textures/items/%s.png"
 
 signal equipment_finished()
+@onready var uphit: CollisionPolygon2D = %UPoly
+@onready var downhit: CollisionPolygon2D = %DPoly
+@onready var lefthit: CollisionPolygon2D = %LPoly
+@onready var righthit: CollisionPolygon2D = %RPoly
+@export var anim_player: AnimationPlayer
+@export var player: Player
+@export var item_sprite: Sprite2D
 
 var equipped_item: String:
 	set(new_item):
 		if new_item == "":
 			damage = 1
 			equipment_cooldown = 0.33
+			item_sprite.texture = null
 		else:
 			damage = Items.get_stats(new_item).damage
 			equipment_cooldown = Items.get_stats(new_item).cooldown
+			item_sprite.texture = load(texture_template % new_item)
 		equipped_item = new_item
 		print("Equipped: " + equipped_item if equipped_item != "" else "hands" + " Damage: " + str(damage) + " Cooldown: " + str(equipment_cooldown))
+
 var game_ui: GameUIController
 var equipment_timer: float = 0
 var equipment_cooldown: float = 0.5
@@ -27,12 +39,21 @@ func initialize(ui: GameUIController):
 	game_ui = ui
 	game_ui.item_equipped.connect(equip_item)
 
+func _ready():
+	# shut off the hitboxes
+	clear_hitboxes()
+	item_sprite.texture = null
+
 func _process(delta):
 	# tick down the equipment timer
 	if equipment_timer > 0:
 		equipment_timer -= delta
 		if equipment_timer <= 0:
+			print("Equipment cooled off")
 			equipment_timer = 0
+			item_sprite.visible = false
+			clear_hitboxes()
+			equipment_finished.emit()
 
 func equip_item(new_item: String):
 	assert(Items.is_item(new_item), "Invalid item: " + new_item)
@@ -41,23 +62,46 @@ func equip_item(new_item: String):
 	if equipped_item == "":
 		game_ui.set_equipped_item(new_item)
 		equipped_item = new_item
-		return
 
 	# Dequipping
-	if equipped_item == new_item:
+	elif equipped_item == new_item:
 		game_ui.set_equipped_item("")
 		equipped_item = ""
-		return
 
 	# Equipping a new item
-	game_ui.set_equipped_item(new_item)
-	equipped_item = new_item
-	return
+	else:
+		game_ui.set_equipped_item(new_item)
+		equipped_item = new_item
+
+	# Update the hit boxes
+	for hitbox in [uphit, downhit, lefthit, righthit]:
+		hitbox.get_parent().damage = damage
 
 # Returns true if the equipment was used
 func use_equipment(location: Vector2) -> bool:
 	if equipment_timer > 0:
 		return false
-	#TODO
+	equipment_timer = equipment_cooldown
+	var direction = (location - global_position).normalized()
+
+	# Determine the direction and perform action based on the quadrant
+	if abs(direction.x) > abs(direction.y):
+		if direction.x > 0:
+			anim_player.play("swing_right")
+			righthit.disabled = false
+		else:
+			anim_player.play("swing_left")
+			lefthit.disabled = false
+	else:
+		if direction.y > 0:
+			anim_player.play("swing_down")
+			downhit.disabled = false
+		else:
+			anim_player.play("swing_up")
+			uphit.disabled = false
+
 	return true
-	
+
+func clear_hitboxes():
+	for hitbox in [uphit, downhit, lefthit, righthit]:
+		hitbox.disabled = true

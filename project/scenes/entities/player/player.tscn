@@ -483,6 +483,7 @@ _data = {
 }
 
 [node name="Player" groups=["player"] instance=ExtResource("1_jydkq")]
+z_index = 10
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1
@@ -495,7 +496,7 @@ max_energy = 100
 [node name="BodySprite" parent="Sprites" index="0"]
 material = SubResource("ShaderMaterial_i3anx")
 sprite_frames = SubResource("SpriteFrames_05g80")
-frame = 3
+frame = 5
 
 [node name="Held" type="Node2D" parent="Sprites" index="1"]
 
@@ -524,24 +525,27 @@ visible = false
 position = Vector2(0, 3.365)
 shape = SubResource("CapsuleShape2D_y31qe")
 
-[node name="Equipment" type="Node" parent="Components" index="3"]
+[node name="Equipment" type="Node2D" parent="Components" index="3" node_paths=PackedStringArray("anim_player", "player", "item_sprite")]
 unique_name_in_owner = true
 script = ExtResource("4_rowrr")
+anim_player = NodePath("../../AnimationPlayer")
+player = NodePath("../..")
+item_sprite = NodePath("../../Sprites/Held/Item")
 
-[node name="AttackHitboxes" type="Node2D" parent="Components" index="4"]
-
-[node name="UpHit" type="Area2D" parent="Components/AttackHitboxes" index="0"]
+[node name="AttackHitboxes" type="Node2D" parent="Components/Equipment" index="0"]
 unique_name_in_owner = true
+
+[node name="UpHit" type="Area2D" parent="Components/Equipment/AttackHitboxes" index="0"]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("6_o5vki")
 damage_faction = 1
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/AttackHitboxes/UpHit" index="0"]
-polygon = PackedVector2Array(15, -8, 0, -17, -15, -8, -10, -1, 0, -6, 10, -1)
-
-[node name="LeftHit" type="Area2D" parent="Components/AttackHitboxes" index="1"]
+[node name="UPoly" type="CollisionPolygon2D" parent="Components/Equipment/AttackHitboxes/UpHit" index="0"]
 unique_name_in_owner = true
+polygon = PackedVector2Array(15, -8, 0, -22, -15, -8, -10, -1, 10, -1)
+
+[node name="RightHit" type="Area2D" parent="Components/Equipment/AttackHitboxes" index="1"]
 position = Vector2(6, 5)
 rotation = 1.57079
 collision_layer = 0
@@ -549,11 +553,11 @@ collision_mask = 4
 script = ExtResource("6_o5vki")
 damage_faction = 1
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/AttackHitboxes/LeftHit" index="0"]
-polygon = PackedVector2Array(15, -8, 0, -17, -15, -8, -10, -1, 0, -6, 10, -1)
-
-[node name="RightHit" type="Area2D" parent="Components/AttackHitboxes" index="2"]
+[node name="RPoly" type="CollisionPolygon2D" parent="Components/Equipment/AttackHitboxes/RightHit" index="0"]
 unique_name_in_owner = true
+polygon = PackedVector2Array(15, -8, 0.000144482, -23, -15, -8, -10, -1, 10, -1)
+
+[node name="LeftHit" type="Area2D" parent="Components/Equipment/AttackHitboxes" index="2"]
 position = Vector2(-6, 5)
 rotation = -1.57079
 collision_layer = 0
@@ -561,11 +565,11 @@ collision_mask = 4
 script = ExtResource("6_o5vki")
 damage_faction = 1
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/AttackHitboxes/RightHit" index="0"]
-polygon = PackedVector2Array(15, -8, 0, -17, -15, -8, -10, -1, 0, -6, 10, -1)
-
-[node name="DownHit" type="Area2D" parent="Components/AttackHitboxes" index="3"]
+[node name="LPoly" type="CollisionPolygon2D" parent="Components/Equipment/AttackHitboxes/LeftHit" index="0"]
 unique_name_in_owner = true
+polygon = PackedVector2Array(15, -8, -0.000137806, -22, -15, -8, -10, -1, 10, -1)
+
+[node name="DownHit" type="Area2D" parent="Components/Equipment/AttackHitboxes" index="3"]
 position = Vector2(0, 10)
 rotation = 3.14159
 collision_layer = 0
@@ -573,8 +577,9 @@ collision_mask = 4
 script = ExtResource("6_o5vki")
 damage_faction = 1
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/AttackHitboxes/DownHit" index="0"]
-polygon = PackedVector2Array(15, -8, 0, -17, -15, -8, -10, -1, 0, -6, 10, -1)
+[node name="DPoly" type="CollisionPolygon2D" parent="Components/Equipment/AttackHitboxes/DownHit" index="0"]
+unique_name_in_owner = true
+polygon = PackedVector2Array(15, -8, 5.5774e-05, -22, -15, -8, -10, -1, 10, -1)
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 
