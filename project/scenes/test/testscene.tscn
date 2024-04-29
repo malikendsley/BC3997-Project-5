@@ -24,83 +24,67 @@ acceleration = 1500
 
 [node name="ItemPickup" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(84, -74)
-item_id = "wood"
-quantity = 1
 
 [node name="ItemPickup2" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(96, -36)
-item_id = "wood"
-quantity = 1
 
 [node name="ItemPickup3" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(7, -70)
-item_id = "wood"
-quantity = 1
 
 [node name="ItemPickup4" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(-106, -32)
-item_id = "wood"
-quantity = 1
 
 [node name="ItemPickup5" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(-60, -61)
-item_id = "wood"
-quantity = 1
 
 [node name="ItemPickup6" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(42, -32)
 item_id = "stone"
-quantity = 1
 
 [node name="ItemPickup7" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(138, -47)
 item_id = "stone"
-quantity = 1
 
 [node name="ItemPickup8" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(138, -16)
 item_id = "stone"
-quantity = 1
 
 [node name="ItemPickup9" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(58, 2)
 item_id = "stone"
-quantity = 1
 
 [node name="ItemPickup10" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(106, -4)
 item_id = "stone"
-quantity = 1
 
 [node name="ItemPickup11" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(131, 63)
 item_id = "fur"
-quantity = 1
 
 [node name="ItemPickup12" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(79, 73)
 item_id = "bone"
-quantity = 1
 
 [node name="ItemPickup13" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(44, 93)
 item_id = "bone"
-quantity = 1
 
 [node name="ItemPickup14" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(139, 96)
 item_id = "fur"
-quantity = 1
 
 [node name="ItemPickup15" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(114, 87)
 item_id = "slime"
-quantity = 1
 
 [node name="ItemPickup16" parent="ItemPickups" instance=ExtResource("5_fkgr2")]
 position = Vector2(80, 114)
 item_id = "bear_claw"
-quantity = 1
 
 [node name="Slime" parent="." instance=ExtResource("4_5y67w")]
 position = Vector2(-78, 6)
+aggro_range = 100.0
+deaggro_range = 150.0
+attack_range = 40.0
+move_speed = 50.0
+cooldown_time = 1.5

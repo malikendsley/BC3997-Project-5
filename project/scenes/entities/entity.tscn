@@ -88,7 +88,7 @@ stat_component = NodePath("../StatComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtComponent"]
 
-[node name="Inventory" type="Node" parent="Components"]
+[node name="Inventory" type="Node2D" parent="Components"]
 unique_name_in_owner = true
 script = ExtResource("4_uvo7b")
 

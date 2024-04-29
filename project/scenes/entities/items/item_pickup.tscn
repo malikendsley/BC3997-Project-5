@@ -7,10 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlm0y"]
 
-[node name="ItemPickup" type="CharacterBody2D"]
+[node name="ItemPickup" type="CharacterBody2D" node_paths=PackedStringArray("item_texture")]
 script = ExtResource("1_0efjb")
-item_id = null
-quantity = null
+item_texture = NodePath("Sprites/ItemSprite")
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -30,3 +29,4 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_vlm0y")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

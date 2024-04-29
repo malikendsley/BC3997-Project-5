@@ -1,9 +1,11 @@
 class_name Inventory
-extends Node
+extends Node2D
 
 signal refresh_inventory
 
 @export var items: Dictionary = {}
+const LOOT_SPLASH_RADIUS = 50
+var item_pickup = preload ("res://project/scenes/entities/items/item_pickup.tscn")
 
 # Add an item by item id ("wood", "stone", etc.) to the player's inventory.
 # Returns the number of that item the player has after added, -1 if unsuccessful.
@@ -84,4 +86,18 @@ func get_all_items() -> Dictionary:
 # TODO: Separate into a new component?
 func drop_inventory_on_ground():
 	for i in items:
-		print("Dropping ", i, " x", items[i])
+		for j in range(items[i]):
+			print("Dropping item '", i, "'")
+			# pick random point at LOOT_SPLASH_RADIUS
+			var angle = randf() * 2 * PI
+			var destination = Vector2(global_position.x + cos(angle) * LOOT_SPLASH_RADIUS, global_position.y + sin(angle) * LOOT_SPLASH_RADIUS)
+			print("Tweening from ", global_position, " to ", destination)
+			# create item entity
+			var item = item_pickup.instantiate() as ItemPickup
+			item.collectible = false
+			get_tree().current_scene.call_deferred("add_child", item)
+			item.update_item(i)
+			item.global_position = global_position
+			var tween = get_tree().create_tween()
+			tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART).tween_property(item, "global_position", destination, 0.5)
+			tween.tween_callback(item.set_collectible.bind(true))
