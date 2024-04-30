@@ -151,6 +151,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/Held/Item:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_d7fmo"]
 resource_name = "idle_down"
@@ -496,7 +508,7 @@ max_energy = 100
 [node name="BodySprite" parent="Sprites" index="0"]
 material = SubResource("ShaderMaterial_i3anx")
 sprite_frames = SubResource("SpriteFrames_05g80")
-frame = 5
+frame = 1
 
 [node name="Held" type="Node2D" parent="Sprites" index="1"]
 

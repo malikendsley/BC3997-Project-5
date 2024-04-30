@@ -13,6 +13,7 @@ signal equipment_finished()
 @export var anim_player: AnimationPlayer
 @export var player: Player
 @export var item_sprite: Sprite2D
+var base_swing_cd: float = 0.33
 
 var equipped_item: String:
 	set(new_item):
@@ -51,7 +52,7 @@ func _process(delta):
 		if equipment_timer <= 0:
 			print("Equipment cooled off")
 			equipment_timer = 0
-			item_sprite.visible = false
+			play_animation("RESET")
 			clear_hitboxes()
 			equipment_finished.emit()
 
@@ -87,20 +88,24 @@ func use_equipment(location: Vector2) -> bool:
 	# Determine the direction and perform action based on the quadrant
 	if abs(direction.x) > abs(direction.y):
 		if direction.x > 0:
-			anim_player.play("swing_right")
+			play_animation("swing_right")
 			righthit.disabled = false
 		else:
-			anim_player.play("swing_left")
+			play_animation("swing_left")
 			lefthit.disabled = false
 	else:
 		if direction.y > 0:
-			anim_player.play("swing_down")
+			play_animation("swing_down")
 			downhit.disabled = false
 		else:
-			anim_player.play("swing_up")
+			play_animation("swing_up")
 			uphit.disabled = false
 
 	return true
+
+func play_animation(anim_name: String):
+	# the base speed on swinging animations is 0.33 seconds, so scale it to the cooldown
+	anim_player.play(anim_name, -1, base_swing_cd / equipment_cooldown)
 
 func clear_hitboxes():
 	for hitbox in [uphit, downhit, lefthit, righthit]:

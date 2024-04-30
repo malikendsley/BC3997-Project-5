@@ -16,7 +16,9 @@ layer_0/tile_data = PackedInt32Array(-524298, 131073, 1, -458762, 131073, 1, -39
 [node name="Player" parent="." node_paths=PackedStringArray("game_ui") instance=ExtResource("2_wpnjs")]
 game_ui = NodePath("../GameUI")
 speed = 200
-acceleration = 1500
+acceleration = 30000
+deceleration = 30000
+max_energy = 100
 
 [node name="GameUI" parent="." instance=ExtResource("3_wdykx")]
 

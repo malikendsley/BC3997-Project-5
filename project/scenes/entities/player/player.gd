@@ -65,7 +65,7 @@ func _process(delta: float):
 					else:
 						anim_player.play("idle_up")
 
-			if InputBuffer.consume_mouse_click():
+			if InputBuffer.consume_mouse_down():
 				var target = get_global_mouse_position()
 				equipment_component.use_equipment(target)
 				current_state = PlayerState.ACTION
