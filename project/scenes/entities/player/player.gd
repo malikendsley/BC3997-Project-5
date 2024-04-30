@@ -26,14 +26,17 @@ enum PlayerState {
 
 var current_state: PlayerState = PlayerState.IDLE
 var input_vector = Vector2()
+var last_anim = ""
 
 func _ready():
 	super()
 	get_script().set_meta(&"singleton", self) # set as singleton
 	add_to_group("player") # in case needed
-	stat_component.health_changed.connect(handle_hp_change)
+	stat_component.health_changed.connect(_handle_hp_change)
 	# TODO: This seems cyclic, maybe fix _ready() calls?
 	game_ui.call_deferred("initialize", stat_component.health, max_energy)
+	game_ui.item_equipped.connect(_handle_item_equipped)
+	game_ui.item_consumed.connect(_handle_item_consumed)
 	equipment_component.equipment_finished.connect(regain_control)
 	equipment_component.initialize(game_ui)
 
@@ -45,7 +48,7 @@ func _process(delta: float):
 	input_vector.y = Input.get_axis("move_up", "move_down")
 	match current_state:
 		PlayerState.IDLE:
-			move(delta)
+			_move(delta)
 			if InputBuffer.consume_action("close_crafting"):
 				game_ui.inventory_screen.close_inventory_screen()
 			elif InputBuffer.consume_action("open_crafting") and !game_ui.inventory_screen.visible:
@@ -56,14 +59,14 @@ func _process(delta: float):
 			if input_vector != Vector2.ZERO:
 				if abs(input_vector.x) > abs(input_vector.y):
 					if input_vector.x > 0:
-						anim_player.play("idle_right")
+						_play_animation("idle_right")
 					else:
-						anim_player.play("idle_left")
+						_play_animation("idle_left")
 				else:
 					if input_vector.y > 0:
-						anim_player.play("idle_down")
+						_play_animation("idle_down")
 					else:
-						anim_player.play("idle_up")
+						_play_animation("idle_up")
 
 			if InputBuffer.consume_mouse_down():
 				var target = get_global_mouse_position()
@@ -76,9 +79,9 @@ func _process(delta: float):
 				current_state = PlayerState.IDLE
 		
 		PlayerState.ACTION:
-			move(delta)
+			_move(delta)
 
-func move(delta: float):
+func _move(delta: float):
 	# move towards input direction with acceleration
 	if input_vector != Vector2.ZERO:
 		var target_velocity = speed * input_vector.normalized()
@@ -90,8 +93,21 @@ func move(delta: float):
 # called when the item is finished being used
 func regain_control():
 	current_state = PlayerState.IDLE
+	# since only movement animations are stored, this will restore the animation playing just prior 
+	# to the action
+	anim_player.play(last_anim)
 
-func handle_hp_change(_new_hp: int):
+func _play_animation(anim_name: String):
+	anim_player.play(anim_name)
+	last_anim = anim_name # store the last animation played
+
+func _handle_item_consumed(_item_id: String):
+	pass
+
+func _handle_item_equipped(item_id: String):
+	equipment_component.equip_item(item_id)
+
+func _handle_hp_change(_new_hp: int):
 	game_ui.set_hp(_new_hp)
 
 static func get_singleton() -> Player:
