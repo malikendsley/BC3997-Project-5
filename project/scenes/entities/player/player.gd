@@ -13,10 +13,6 @@ extends Entity
 @export var acceleration: int = 1500 # px/s^2
 @export var deceleration: int = 3000 # px/s^2
 
-@export_category("Stats")
-@export var max_energy: int = 100
-var current_energy: int = 100
-
 # subject to change
 enum PlayerState {
 	IDLE, # not doing anything
@@ -34,7 +30,7 @@ func _ready():
 	add_to_group("player") # in case needed
 	stat_component.health_changed.connect(_handle_hp_change)
 	# TODO: This seems cyclic, maybe fix _ready() calls?
-	game_ui.call_deferred("initialize", stat_component.health, max_energy)
+	game_ui.call_deferred("initialize", stat_component.current_health, stat_component.max_energy)
 	game_ui.item_equipped.connect(_handle_item_equipped)
 	game_ui.item_consumed.connect(_handle_item_consumed)
 	equipment_component.equipment_finished.connect(regain_control)
@@ -101,8 +97,9 @@ func _play_animation(anim_name: String):
 	anim_player.play(anim_name)
 	last_anim = anim_name # store the last animation played
 
-func _handle_item_consumed(_item_id: String):
-	pass
+func _handle_item_consumed(item_id: String):
+	if (stat_component as PlayerStatComponent).try_apply_consumable(item_id):
+		inventory.remove_item(item_id)
 
 func _handle_item_equipped(item_id: String):
 	equipment_component.equip_item(item_id)

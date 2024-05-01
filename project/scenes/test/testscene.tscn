@@ -18,7 +18,6 @@ game_ui = NodePath("../GameUI")
 speed = 200
 acceleration = 30000
 deceleration = 30000
-max_energy = 100
 
 [node name="GameUI" parent="." instance=ExtResource("3_wdykx")]
 

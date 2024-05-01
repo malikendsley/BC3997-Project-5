@@ -35,8 +35,8 @@
             "recipe": null,
             "is_equippable": false,
             "effects": {
-                "heal": "2",
-                "food": "10"
+                "health": 2,
+                "energy": 10
             }
         },
         "bear_claw": {
