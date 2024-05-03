@@ -5,7 +5,7 @@ signal refresh_inventory
 
 @export var items: Dictionary = {}
 const LOOT_SPLASH_RADIUS = 50
-var item_pickup = preload ("res://project/scenes/entities/items/item_pickup.tscn")
+@export var item_pickup: PackedScene
 
 # Add an item by item id ("wood", "stone", etc.) to the player's inventory.
 # Returns the number of that item the player has after added, -1 if unsuccessful.

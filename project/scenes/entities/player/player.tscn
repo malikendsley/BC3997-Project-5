@@ -526,7 +526,8 @@ shape = SubResource("CapsuleShape2D_8xhuy")
 
 [node name="StatComponent" parent="Components" index="0"]
 script = ExtResource("5_iglqn")
-max_energy = 100
+max_energy = 100.0
+base_energy_time = 90.0
 max_health = 10
 
 [node name="HurtComponent" parent="Components" index="1"]
