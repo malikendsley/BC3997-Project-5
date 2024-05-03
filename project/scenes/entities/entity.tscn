@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cbyh3nd31pvvp"]
 
-[ext_resource type="Script" path="res://project/scripts/entities/entity.gd" id="1_kh6d5"]
+[ext_resource type="Script" path="res://project/scenes/entities/entity.gd" id="1_kh6d5"]
 [ext_resource type="Script" path="res://project/scripts/components/stat_component.gd" id="1_x2fu7"]
 [ext_resource type="Script" path="res://project/scripts/components/hurt_component.gd" id="2_03hgm"]
 [ext_resource type="Script" path="res://project/scripts/inventory/inventory.gd" id="4_uvo7b"]

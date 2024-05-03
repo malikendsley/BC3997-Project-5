@@ -30,6 +30,18 @@ window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 window/stretch/scale=0.5
 
+[file_customization]
+
+folder_colors={
+"res://project/data/": "red",
+"res://project/scenes/": "orange",
+"res://project/scripts/": "yellow",
+"res://project/shaders/": "green",
+"res://project/sounds/": "teal",
+"res://project/textures/": "blue",
+"res://project/tilesets/": "purple"
+}
+
 [input]
 
 open_crafting={
