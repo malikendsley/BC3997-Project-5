@@ -8,12 +8,13 @@ const sound_template = "res://project/sounds/"
 const sound_extension = ".wav"
 
 @export var sounds = {
-    "test": preload (sound_template + "test" + sound_extension),
+	"test": preload (sound_template + "test" + sound_extension),
+	"craft": preload (sound_template + "craft" + ".ogg")
 }
 
 func play_sound(sound_id):
-    if sounds.has(sound_id):
-        var sound = sounds[sound_id].duplicate()
-        sound.play()
-    else:
-        print("Sound not found: " + sound_id)
+	if sounds.has(sound_id):
+		var sound = sounds[sound_id].duplicate()
+		sound.play()
+	else:
+		print("Sound not found: " + sound_id)
