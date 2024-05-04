@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpqslkmtld2ny"]
+[gd_scene load_steps=7 format=3 uid="uid://cpqslkmtld2ny"]
 
+[ext_resource type="PackedScene" uid="uid://drsafd8l8jcvl" path="res://project/scenes/ui/day_cycle/day_cycle.tscn" id="1_qx3g8"]
 [ext_resource type="TileSet" uid="uid://cggfhfql5sxiv" path="res://project/tilesets/base.tres" id="1_ruckg"]
 [ext_resource type="PackedScene" uid="uid://c482l4lqy7g1v" path="res://project/scenes/entities/player/player.tscn" id="2_wpnjs"]
 [ext_resource type="PackedScene" uid="uid://b48hx3yeervyu" path="res://project/scenes/ui/game_ui/game_ui.tscn" id="3_wdykx"]
@@ -7,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cqsv42vav7ulh" path="res://project/scenes/items/item_pickup.tscn" id="5_fkgr2"]
 
 [node name="Testscene" type="Node2D"]
+
+[node name="DayCycle" parent="." instance=ExtResource("1_qx3g8")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_ruckg")
