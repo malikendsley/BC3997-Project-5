@@ -37,7 +37,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="InventoryControl/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 10
 text = "Inventory"
 horizontal_alignment = 1
 
@@ -85,7 +85,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="CraftingControl/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 10
 text = "Crafting"
 horizontal_alignment = 1
 
