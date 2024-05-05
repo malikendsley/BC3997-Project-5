@@ -100,9 +100,11 @@ func _play_animation(anim_name: String):
 
 func _handle_item_consumed(item_id: String):
 	if (stat_component as PlayerStatComponent).try_apply_consumable(item_id):
+		SoundManager.play_sound("eat")
 		inventory.remove_item(item_id)
 
 func _handle_item_equipped(item_id: String):
+	SoundManager.play_sound("equip")
 	equipment_component.equip_item(item_id)
 
 func _handle_hp_change(new_hp: int):

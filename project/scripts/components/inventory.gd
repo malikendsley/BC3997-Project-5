@@ -29,14 +29,17 @@ func remove_item(item: String, quantity: int=1) -> int:
 		print("remove_item: invalid item ", item)
 		return - 1
 	
+	var res: int = -1
 	if items.has(item) and items[item] >= quantity:
 		items[item] -= quantity
 		if items[item] <= 0:
 			items.erase(item)
-			return 0
-		return items[item]
+			res = 0
+		else:
+			res = items[item]
+	
 	refresh_inventory.emit()
-	return - 1
+	return res
 
 # Gets the number of some item currently in the user's inventory
 func get_quantity(item: String) -> int:

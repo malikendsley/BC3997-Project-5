@@ -63,5 +63,5 @@ func initialize(my_item_id: String, my_can_craft: bool):
 
 func _on_entry_button_pressed():
 	player_inventory_node.craft(item_id)
-	# TODO Play craft sound
+	SoundManager.play_sound("click")
 	inventory_changed.emit()
