@@ -22,7 +22,7 @@ func _ready():
 	invulnerable_duration_timer.one_shot = true
 	invulnerable_duration_timer.timeout.connect(handle_invulnerability_timeout)
 
-func send_damage(damage_instance: DamageInstance):
+func take_damage(damage_instance: DamageInstance):
 	if is_invulnerable:
 		return
 	if damage_instance.faction != faction:

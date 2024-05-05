@@ -36,4 +36,4 @@ func _on_hurt_area_exited(hurt_area: HurtComponent):
 func _damage_target(target: HurtComponent):
     var damage_instance = DamageInstance.new(damage, damage_faction, self, position)
     hit_something.emit(damage_instance, target)
-    target.send_damage(damage_instance)
+    target.take_damage(damage_instance)
