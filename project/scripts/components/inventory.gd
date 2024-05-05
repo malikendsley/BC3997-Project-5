@@ -5,7 +5,7 @@ signal refresh_inventory
 
 @export var items: Dictionary = {}
 const LOOT_SPLASH_RADIUS = 50
-var item_pickup = preload ("res://project/scenes/entities/items/item_pickup.tscn")
+@export var item_pickup: PackedScene
 
 # Add an item by item id ("wood", "stone", etc.) to the player's inventory.
 # Returns the number of that item the player has after added, -1 if unsuccessful.
@@ -29,14 +29,17 @@ func remove_item(item: String, quantity: int=1) -> int:
 		print("remove_item: invalid item ", item)
 		return - 1
 	
+	var res: int = -1
 	if items.has(item) and items[item] >= quantity:
 		items[item] -= quantity
 		if items[item] <= 0:
 			items.erase(item)
-			return 0
-		return items[item]
+			res = 0
+		else:
+			res = items[item]
+	
 	refresh_inventory.emit()
-	return - 1
+	return res
 
 # Gets the number of some item currently in the user's inventory
 func get_quantity(item: String) -> int:

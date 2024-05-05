@@ -29,6 +29,7 @@ func _ready():
 	get_script().set_meta(&"singleton", self) # set as singleton
 	add_to_group("player") # in case needed
 	stat_component.health_changed.connect(_handle_hp_change)
+	stat_component.energy_changed.connect(_handle_energy_change)
 	# TODO: This seems cyclic, maybe fix _ready() calls?
 	game_ui.call_deferred("initialize", stat_component.current_health, stat_component.max_energy)
 	game_ui.item_equipped.connect(_handle_item_equipped)
@@ -99,13 +100,18 @@ func _play_animation(anim_name: String):
 
 func _handle_item_consumed(item_id: String):
 	if (stat_component as PlayerStatComponent).try_apply_consumable(item_id):
+		SoundManager.play_sound("eat")
 		inventory.remove_item(item_id)
 
 func _handle_item_equipped(item_id: String):
+	SoundManager.play_sound("equip")
 	equipment_component.equip_item(item_id)
 
-func _handle_hp_change(_new_hp: int):
-	game_ui.set_hp(_new_hp)
+func _handle_hp_change(new_hp: int):
+	game_ui.set_hp(new_hp)
+
+func _handle_energy_change(new_energy: int):
+	game_ui.set_energy(new_energy)
 
 static func get_singleton() -> Player:
 	return (Player as Script).get_meta(&"singleton") as Player

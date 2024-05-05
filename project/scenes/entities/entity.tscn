@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbyh3nd31pvvp"]
+[gd_scene load_steps=11 format=3 uid="uid://cbyh3nd31pvvp"]
 
-[ext_resource type="Script" path="res://project/scripts/entities/entity.gd" id="1_kh6d5"]
+[ext_resource type="Script" path="res://project/scenes/entities/entity.gd" id="1_7l8rf"]
 [ext_resource type="Script" path="res://project/scripts/components/stat_component.gd" id="1_x2fu7"]
 [ext_resource type="Script" path="res://project/scripts/components/hurt_component.gd" id="2_03hgm"]
-[ext_resource type="Script" path="res://project/scripts/inventory/inventory.gd" id="4_uvo7b"]
+[ext_resource type="Script" path="res://project/scripts/components/inventory.gd" id="4_lgval"]
+[ext_resource type="PackedScene" uid="uid://cqsv42vav7ulh" path="res://project/scenes/items/item_pickup.tscn" id="5_aqcvp"]
 
 [sub_resource type="Shader" id="Shader_3utgm"]
 code = "shader_type canvas_item;
@@ -65,7 +66,7 @@ _data = {
 }
 
 [node name="Entity" type="CharacterBody2D"]
-script = ExtResource("1_kh6d5")
+script = ExtResource("1_7l8rf")
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -90,7 +91,9 @@ stat_component = NodePath("../StatComponent")
 
 [node name="Inventory" type="Node2D" parent="Components"]
 unique_name_in_owner = true
-script = ExtResource("4_uvo7b")
+script = ExtResource("4_lgval")
+items = null
+item_pickup = ExtResource("5_aqcvp")
 
 [node name="SFXPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
