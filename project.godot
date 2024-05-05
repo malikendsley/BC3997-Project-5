@@ -20,6 +20,7 @@ Items="*res://project/scripts/inventory/items.gd"
 
 Items="*res://project/scripts/items/items.gd"
 InputBuffer="*res://project/scripts/mechanics/input_buffer.gd"
+SoundManager="*res://project/scripts/mechanics/sound_manager.gd"
 TimeManager="*res://project/scripts/mechanics/time_manager.gd"
 
 [display]
