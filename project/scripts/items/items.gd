@@ -4,7 +4,9 @@ extends Node
 enum Type {UNDEFINED,
 	RESOURCE,
 	WEAPON,
-	ITEM}
+	ITEM,
+	TOOL,
+	MATERIAL}
 
 # Inner Item class
 class Item:

@@ -4,5 +4,5 @@ extends Node2D
 signal attack_finished()
 var attached_ai: Enemy = null
 
-func attack(target: Player):
+func attack(_target: Player):
     pass

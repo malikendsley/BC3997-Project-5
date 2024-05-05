@@ -62,10 +62,8 @@ func _process(delta):
             else:
                 # if outside of attack range, move towards player and reset attack timer
                 if playerref.global_position.distance_to(global_position) > attack_range:
-                    var move_vector = (playerref.global_position - global_position).normalized() * move_speed
                     # scale the move vector slightly down when nearing ideal range
-                    move_vector = move_vector * (playerref.global_position.distance_to(global_position) / attack_range)
-                    velocity = move_vector
+                    velocity = (playerref.global_position - global_position).normalized() * move_speed
                     attack_timer = attack_time
                     move_and_slide()
                 else:

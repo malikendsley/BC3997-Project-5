@@ -27,7 +27,30 @@ func add_crafting_node(item: String, can_craft: bool):
 	crafting_entries_container.add_child(crafting_entry_instance)
 
 func gen_items_list():
+	# First pass for equippable items
 	for item_id in inventory.items:
+		if not Items.is_equippable(item_id):
+			continue
+		if not inventory.has_item(item_id):
+			print("This shouldn't happen")
+			continue
+
+		add_items_node(item_id, inventory.get_quantity(item_id))
+	
+	# Second pass for consumable items
+	for item_id in inventory.items:
+		if not Items.is_consumable(item_id):
+			continue
+		if not inventory.has_item(item_id):
+			print("This shouldn't happen")
+			continue
+
+		add_items_node(item_id, inventory.get_quantity(item_id))
+	
+	# Third pass for regular items
+	for item_id in inventory.items:
+		if Items.is_consumable(item_id) or Items.is_equippable(item_id):
+			continue
 		if not inventory.has_item(item_id):
 			print("This shouldn't happen")
 			continue

@@ -1,21 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqsv42vav7ulh"]
 
-[ext_resource type="Script" path="res://project/scenes/entities/items/item_pickup.gd" id="1_0efjb"]
-[ext_resource type="Texture2D" uid="uid://vij0s66h6y84" path="res://project/textures/items/wood.png" id="1_boncg"]
+[ext_resource type="Script" path="res://project/scenes/items/item_pickup.gd" id="1_gvkaf"]
+[ext_resource type="Texture2D" uid="uid://vij0s66h6y84" path="res://project/textures/items/wood.png" id="2_avpo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61u4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlm0y"]
 
 [node name="ItemPickup" type="CharacterBody2D" node_paths=PackedStringArray("item_texture")]
-script = ExtResource("1_0efjb")
+script = ExtResource("1_gvkaf")
 item_texture = NodePath("Sprites/ItemSprite")
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="ItemSprite" type="Sprite2D" parent="Sprites"]
 unique_name_in_owner = true
-texture = ExtResource("1_boncg")
+texture = ExtResource("2_avpo2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_61u4p")

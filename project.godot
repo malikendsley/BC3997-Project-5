@@ -21,8 +21,10 @@ Items="*res://project/scripts/inventory/items.gd"
 
 [autoload]
 
-Items="*res://project/scripts/inventory/items.gd"
+Items="*res://project/scripts/items/items.gd"
 InputBuffer="*res://project/scripts/mechanics/input_buffer.gd"
+SoundManager="*res://project/scripts/mechanics/sound_manager.gd"
+TimeManager="*res://project/scripts/mechanics/time_manager.gd"
 
 [display]
 
@@ -31,7 +33,18 @@ window/size/viewport_height=180
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
-window/stretch/scale=0.5
+
+[file_customization]
+
+folder_colors={
+"res://project/data/": "red",
+"res://project/scenes/": "orange",
+"res://project/scripts/": "yellow",
+"res://project/shaders/": "green",
+"res://project/sounds/": "teal",
+"res://project/textures/": "blue",
+"res://project/tilesets/": "purple"
+}
 
 [input]
 
@@ -76,5 +89,3 @@ move_right={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"

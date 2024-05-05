@@ -21,9 +21,23 @@
 			"recipe": null,
 			"is_equippable": false
 		},
+		"fiber": {
+			"id": "fiber",
+			"name": "Fiber",
+			"type": "Resource",
+			"recipe": null,
+			"is_equippable": false
+		},
 		"bone": {
 			"id": "bone",
 			"name": "Bone",
+			"type": "Resource",
+			"recipe": null,
+			"is_equippable": false
+		},
+		"cloak": {
+			"id": "cloak",
+			"name": "Cloak",
 			"type": "Resource",
 			"recipe": null,
 			"is_equippable": false
@@ -35,8 +49,8 @@
 			"recipe": null,
 			"is_equippable": false,
 			"effects": {
-				"heal": "2",
-				"food": "10"
+				"health": 2,
+				"energy": 10
 			}
 		},
 		"bear_claw": {
@@ -45,6 +59,23 @@
 			"type": "Resource",
 			"recipe": null,
 			"is_equippable": false
+		},
+		"stone_axe": {
+			"id": "stone_axe",
+			"name": "Stone Axe",
+			"type": "Tool",
+			"recipe": [
+				"stone",
+				"stone",
+				"stone",
+				"wood",
+				"wood"
+			],
+			"is_equippable": true,
+			"stats": {
+				"cooldown": 0.5,
+				"damage": 7
+			}
 		},
 		"stone_sword": {
 			"id": "stone_sword",
@@ -57,25 +88,103 @@
 			],
 			"is_equippable": true,
 			"stats": {
-				"cooldown": 0.5,
+				"cooldown": 0.33,
 				"damage": 5
 			}
+		},
+		"rope": {
+			"id": "rope",
+			"name": "Rope",
+			"type": "Material",
+			"recipe": [
+				"fiber",
+				"fiber",		
+				"fiber",
+				"slime",
+				"slime"
+			],
+			"is_equippable": false
+		},
+		"sail": {
+			"id": "sail",
+			"name": "Sail",
+			"type": "Material",
+			"recipe": [
+				"cloak",
+				"cloak",		
+				"fur",
+				"fur"
+			],
+			"is_equippable": false
+		},
+		"pole": {
+			"id": "pole",
+			"name": "Pole",
+			"type": "Material",
+			"recipe": [
+				"wood",
+				"wood",		
+				"wood",
+				"bone",
+				"bone"
+			],
+			"is_equippable": false
+		},
+		"mast": {
+			"id": "mast",
+			"name": "Mast",
+			"type": "Material",
+			"recipe": [
+				"sail",
+				"pole",
+				"rope"
+			],
+			"is_equippable": false
+		},
+		"hull": {
+			"id": "hull",
+			"name": "Hull",
+			"type": "Material",
+			"recipe": [
+				"wood",
+				"wood",
+				"wood",
+				"wood",
+				"wood",
+				"wood",
+				"wood",
+				"wood",
+				"wood",
+				"wood",
+				"stone",
+				"stone",
+				"stone",
+				"stone",
+				"stone"
+			],
+			"is_equippable": false
+		},
+		"anchor": {
+			"id": "anchor",
+			"name": "Anchor",
+			"type": "Material",
+			"recipe": [
+				"bear_claw",
+				"stone",
+				"stone",
+				"stone",
+				"rope"
+			],
+			"is_equippable": false
 		},
 		"raft": {
 			"id": "raft",
 			"name": "Raft",
 			"type": "Item",
 			"recipe": [
-				"wood",
-				"wood",
-				"wood",
-				"stone",
-				"stone",
-				"stone",
-				"fur",
-				"fur",
-				"bone",
-				"bone"
+				"mast",
+				"hull",
+				"anchor"
 			],
 			"is_equippable": false
 		}
