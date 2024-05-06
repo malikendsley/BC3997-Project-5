@@ -43,9 +43,6 @@ script = ExtResource("2_ivrdh")
 attack_range = 50.0
 attack_time = 0.5
 cooldown_time = 0.5
-move_speed = 100.0
-knockback_distance = 20.0
-knockback_time = 0.33
 attack_module = NodePath("Components/SlimeAttack")
 
 [node name="BodySprite" parent="Sprites" index="0"]
@@ -61,8 +58,6 @@ shape = SubResource("CircleShape2D_trb3i")
 max_health = 10
 
 [node name="HurtComponent" parent="Components" index="1"]
-collision_layer = 4
-collision_mask = 0
 faction = 2
 
 [node name="CollisionShape2D" parent="Components/HurtComponent" index="0"]

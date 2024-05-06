@@ -1,12 +1,12 @@
 extends CanvasModulate
 
-@export var gradient_texture:GradientTexture1D
+@export var gradient_texture: GradientTexture1D
 
 func _ready():
 	TimeManager.night_to_day.connect(_on_night_to_day)
 	TimeManager.day_to_night.connect(_on_day_to_night)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var time: float = TimeManager.get_time_float()
 	
 	var value = (sin(time - PI / 2.0) + 1.0) / 2.0

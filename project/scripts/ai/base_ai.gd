@@ -20,20 +20,10 @@ enum EnemyState {
 	ATTACKED, # just attacked, waiting for attack module to return control
 	WAITING, # waiting for attack timer to expire
 	HITSTUN,
+	DEAD,
 }
 
-var state_names = {
-	EnemyState.IDLE: "IDLE",
-	EnemyState.AGGRO: "AGGRO",
-	EnemyState.ATTACKED: "ATTACKED",
-	EnemyState.WAITING: "WAITING",
-	EnemyState.HITSTUN: "HITSTUN",
-}
-var cur_state: EnemyState = EnemyState.IDLE:
-	set(new_state):
-		if new_state != cur_state:
-			print("State change: ", state_names[cur_state], " -> ", state_names[new_state])
-		cur_state = new_state
+var cur_state: EnemyState = EnemyState.IDLE
 var playerref: Player
 
 # on spawn, generate the loot this enemy is carrying (which will drop on death)
@@ -41,8 +31,8 @@ func _ready():
 	super()
 	var loot_id = Items.roll_loot_table(enemy_id)
 	if loot_id != "":
-		print("Adding loot")
-		inventory.add_item(loot_id, randi() % 3 + 1)
+		var num_items = randi() % 3 + 1
+		inventory.add_item(loot_id, num_items)
 	assert(aggro_area.shape is CircleShape2D)
 	assert(deaggro_area.shape is CircleShape2D)
 	aggro_area.shape.radius = aggro_range
@@ -58,6 +48,8 @@ func handle_destroyed(_d_i: DamageInstance) -> void:
 
 func handle_hit(d_i: DamageInstance) -> void:
 	super(d_i)
+	if cur_state == EnemyState.DEAD:
+		return
 	# apply hitstun
 	cur_state = EnemyState.HITSTUN
 	# move the enemy away from the player
@@ -72,10 +64,8 @@ func is_player_in_range() -> bool:
 var player_in_range: bool = false
 func _on_aggro_range_enter(body: Node) -> void:
 	if body is Player:
-		print("Player in range")
 		player_in_range = true
 
 func _on_deaggro_range_exit(body: Node) -> void:
 	if body is Player:
-		print("Player out of range")
 		player_in_range = false

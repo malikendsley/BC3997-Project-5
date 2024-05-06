@@ -1,8 +1,219 @@
-[gd_scene load_steps=2 format=3 uid="uid://cghpdjoc555q6"]
+[gd_scene load_steps=31 format=3 uid="uid://cghpdjoc555q6"]
 
 [ext_resource type="PackedScene" uid="uid://bxumtieeccywb" path="res://project/scenes/entities/enemy/enemy.tscn" id="1_okmcu"]
+[ext_resource type="Script" path="res://project/scripts/ai/cultist_ai.gd" id="2_6fesp"]
+[ext_resource type="Texture2D" uid="uid://blv5beta4snkj" path="res://raw_art/Bot Wheel/death.png" id="2_sml6u"]
+[ext_resource type="Texture2D" uid="uid://u4mhxd4skoc1" path="res://raw_art/Bot Wheel/move without FX.png" id="3_aq2nh"]
+[ext_resource type="Texture2D" uid="uid://bcvvl7ctd6bod" path="res://raw_art/Bot Wheel/move with FX.png" id="4_5y1be"]
+[ext_resource type="Texture2D" uid="uid://owdw6cpiev1r" path="res://raw_art/Bot Wheel/shoot with FX.png" id="5_6fueb"]
+[ext_resource type="Script" path="res://project/scripts/components/attack_modules/cultist_attack.gd" id="7_rivcu"]
 
-[node name="Cultist" instance=ExtResource("1_okmcu")]
-move_speed = 100.0
-knockback_distance = 20.0
-knockback_time = 0.33
+[sub_resource type="SpriteFrames" id="SpriteFrames_caetd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hp0w"]
+atlas = ExtResource("2_sml6u")
+region = Rect2(0, 0, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot56m"]
+atlas = ExtResource("2_sml6u")
+region = Rect2(0, 26, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilpkk"]
+atlas = ExtResource("2_sml6u")
+region = Rect2(0, 52, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5q1c"]
+atlas = ExtResource("2_sml6u")
+region = Rect2(0, 78, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg0wv"]
+atlas = ExtResource("2_sml6u")
+region = Rect2(0, 104, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7soa"]
+atlas = ExtResource("2_sml6u")
+region = Rect2(0, 130, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4hwm"]
+atlas = ExtResource("3_aq2nh")
+region = Rect2(0, 78, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlcjy"]
+atlas = ExtResource("4_5y1be")
+region = Rect2(0, 0, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ap31"]
+atlas = ExtResource("4_5y1be")
+region = Rect2(0, 26, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4i4e"]
+atlas = ExtResource("4_5y1be")
+region = Rect2(0, 52, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8332"]
+atlas = ExtResource("4_5y1be")
+region = Rect2(0, 78, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i02fg"]
+atlas = ExtResource("4_5y1be")
+region = Rect2(0, 104, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0pch"]
+atlas = ExtResource("4_5y1be")
+region = Rect2(0, 130, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rldes"]
+atlas = ExtResource("4_5y1be")
+region = Rect2(0, 156, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh8j2"]
+atlas = ExtResource("4_5y1be")
+region = Rect2(0, 182, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8j6i"]
+atlas = ExtResource("5_6fueb")
+region = Rect2(0, 0, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58cy0"]
+atlas = ExtResource("5_6fueb")
+region = Rect2(0, 26, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcbtt"]
+atlas = ExtResource("5_6fueb")
+region = Rect2(0, 52, 117, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66235"]
+atlas = ExtResource("5_6fueb")
+region = Rect2(0, 78, 117, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwg33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hp0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot56m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilpkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5q1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg0wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7soa")
+}],
+"loop": true,
+"name": &"die",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4hwm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlcjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ap31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4i4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8332")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i02fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0pch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rldes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gh8j2")
+}],
+"loop": true,
+"name": &"move",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8j6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58cy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcbtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66235")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75mp2"]
+size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gojuy"]
+size = Vector2(12, 16)
+
+[node name="Cultist" node_paths=PackedStringArray("attack_module") instance=ExtResource("1_okmcu")]
+script = ExtResource("2_6fesp")
+attack_range = 50.0
+attack_time = 0.5
+cooldown_time = 0.5
+move_speed = 75.0
+enemy_id = "cultist"
+aggro_range = 100.0
+deaggro_range = 150.0
+attack_module = NodePath("Components/CultistAttack")
+
+[node name="BodySprite" parent="Sprites" index="0"]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_caetd")
+
+[node name="ActualSprite" type="AnimatedSprite2D" parent="Sprites/BodySprite" index="0"]
+unique_name_in_owner = true
+use_parent_material = true
+position = Vector2(37, 0)
+sprite_frames = SubResource("SpriteFrames_wwg33")
+animation = &"move"
+frame_progress = 0.746215
+
+[node name="Node2D" type="Node2D" parent="Sprites/BodySprite" index="1"]
+position = Vector2(15, 0)
+
+[node name="MoveBox" parent="." index="1"]
+position = Vector2(1, -4)
+shape = SubResource("RectangleShape2D_75mp2")
+
+[node name="StatComponent" parent="Components" index="0"]
+max_health = 20
+
+[node name="CollisionShape2D" parent="Components/HurtComponent" index="0"]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_gojuy")
+
+[node name="CultistAttack" type="Node2D" parent="Components" index="3"]
+script = ExtResource("7_rivcu")
+
+[node name="AggroArea" parent="." index="4"]
+visible = false
+
+[node name="DeaggroArea" parent="." index="5"]
+visible = false

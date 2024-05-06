@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c482l4lqy7g1v" path="res://project/scenes/entities/player/player.tscn" id="2_wpnjs"]
 [ext_resource type="PackedScene" uid="uid://b48hx3yeervyu" path="res://project/scenes/ui/game_ui/game_ui.tscn" id="3_wdykx"]
 [ext_resource type="PackedScene" uid="uid://cqsv42vav7ulh" path="res://project/scenes/items/item_pickup.tscn" id="5_fkgr2"]
-[ext_resource type="PackedScene" uid="uid://mndqvf585aii" path="res://project/scenes/entities/enemy/rabbit.tscn" id="7_syxno"]
+[ext_resource type="PackedScene" uid="uid://cghpdjoc555q6" path="res://project/scenes/entities/enemy/cultist.tscn" id="6_810rx"]
 
 [node name="Testscene" type="Node2D"]
 
@@ -85,5 +85,9 @@ item_id = "slime"
 position = Vector2(80, 114)
 item_id = "bear_claw"
 
-[node name="Rabbit" parent="." instance=ExtResource("7_syxno")]
-position = Vector2(-45, 56)
+[node name="Cultist" parent="." instance=ExtResource("6_810rx")]
+attack_range = 50.0
+attack_time = 0.5
+cooldown_time = 0.5
+knockback_distance = 20.0
+knockback_time = 0.33

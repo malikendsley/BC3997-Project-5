@@ -538,6 +538,9 @@ visible = false
 position = Vector2(0, 3.365)
 shape = SubResource("CapsuleShape2D_y31qe")
 
+[node name="Inventory" parent="Components" index="2"]
+items = {}
+
 [node name="Equipment" type="Node2D" parent="Components" index="3" node_paths=PackedStringArray("anim_player", "player", "item_sprite")]
 unique_name_in_owner = true
 script = ExtResource("4_rowrr")
