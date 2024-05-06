@@ -14,13 +14,12 @@ config/name="Game Design Project 5"
 run/main_scene="res://project/scenes/test/testscene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.0941176, 0.156863, 0.12549, 1)
-boot_splash/image="res://project/splash + tutorials/ISLAND.png"
 config/icon="res://project/icon.svg"
 boot_splash/minimum_display_time=500
-Items="*res://project/scripts/inventory/items.gd"
 
 [autoload]
 
+SettingsSave="*res://project/scripts/mechanics/settings_save.gd"
 Items="*res://project/scripts/items/items.gd"
 InputBuffer="*res://project/scripts/mechanics/input_buffer.gd"
 SoundManager="*res://project/scripts/mechanics/sound_manager.gd"
