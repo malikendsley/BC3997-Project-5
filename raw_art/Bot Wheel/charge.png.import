@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcjs8xyo1pmlo"
-path="res://.godot/imported/Rabbit_Horned_Move.png-fa23b44a218fb8f8f5c3f9d7ee0c7e2e.ctex"
+uid="uid://cls51vsmywqb"
+path="res://.godot/imported/charge.png-1f3e0ddd80132f88d7fa41340643cf74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://raw_art/Monster Pack (Free)/Spritesheets/Updated Rabbit Horned/Rabbit_Horned_Move.png"
-dest_files=["res://.godot/imported/Rabbit_Horned_Move.png-fa23b44a218fb8f8f5c3f9d7ee0c7e2e.ctex"]
+source_file="res://raw_art/Bot Wheel/charge.png"
+dest_files=["res://.godot/imported/charge.png-1f3e0ddd80132f88d7fa41340643cf74.ctex"]
 
 [params]
 

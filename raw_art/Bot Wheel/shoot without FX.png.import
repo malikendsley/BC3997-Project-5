@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w3g1pe3wtwbf"
-path="res://.godot/imported/Rabbit_Horned_Attack.png-1e24c38a16f621aae60d27b10c789f51.ctex"
+uid="uid://c0xeotaigfu37"
+path="res://.godot/imported/shoot without FX.png-0552b7f32e2c7685148ebfd73042e9c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://raw_art/Monster Pack (Free)/Spritesheets/Updated Rabbit Horned/Rabbit_Horned_Attack.png"
-dest_files=["res://.godot/imported/Rabbit_Horned_Attack.png-1e24c38a16f621aae60d27b10c789f51.ctex"]
+source_file="res://raw_art/Bot Wheel/shoot without FX.png"
+dest_files=["res://.godot/imported/shoot without FX.png-0552b7f32e2c7685148ebfd73042e9c4.ctex"]
 
 [params]
 

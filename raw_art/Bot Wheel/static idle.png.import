@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnai0ygst37yt"
-path="res://.godot/imported/Rabbit_Horned_Idle.png-b649be9c278eb20d9f85aaad242a319c.ctex"
+uid="uid://c01jpbi3g620t"
+path="res://.godot/imported/static idle.png-1ae601c6a04c0e498fc7cea09451b6f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://raw_art/Monster Pack (Free)/Spritesheets/Updated Rabbit Horned/Rabbit_Horned_Idle.png"
-dest_files=["res://.godot/imported/Rabbit_Horned_Idle.png-b649be9c278eb20d9f85aaad242a319c.ctex"]
+source_file="res://raw_art/Bot Wheel/static idle.png"
+dest_files=["res://.godot/imported/static idle.png-1ae601c6a04c0e498fc7cea09451b6f0.ctex"]
 
 [params]
 
