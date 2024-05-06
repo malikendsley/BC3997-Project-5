@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://wicpdyl66qfh"]
+[gd_scene load_steps=5 format=3 uid="uid://wicpdyl66qfh"]
 
 [ext_resource type="Script" path="res://project/scenes/ui/main_menu/main_menu_ controller.gd" id="1_kdti5"]
 [ext_resource type="Script" path="res://project/scenes/ui/main_menu/settings_controller.gd" id="2_6p5ps"]
+[ext_resource type="Texture2D" uid="uid://bupcvuyvhxh5r" path="res://project/splash + tutorials/ISLAND.png" id="3_ip563"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxjfu"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(1, 0.472, 0.12, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,6 +26,7 @@ script = ExtResource("1_kdti5")
 
 [node name="SettingsControl" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,7 +198,6 @@ text = "Back"
 
 [node name="MainMenuControl" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -195,55 +205,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MainMenuControl"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="MainMenuControl"]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("3_ip563")
+expand_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MainMenuControl/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuControl/Panel/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="MainMenuControl/TextureRect"]
 layout_mode = 2
+offset_left = 18.0
+offset_top = 138.0
+offset_right = 298.0
+offset_bottom = 169.0
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+alignment = 1
 
-[node name="Label" type="Label" parent="MainMenuControl/Panel/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-text = "ISLAND SURVIVAL (we need a title!)"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="MainMenuControl/Panel/MarginContainer/VBoxContainer2"]
-clip_children = 1
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuControl/Panel/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="StartButton" type="Button" parent="MainMenuControl/Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="StartButton" type="Button" parent="MainMenuControl/TextureRect/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_fxjfu")
 text = "Start"
 
-[node name="SettingsButton" type="Button" parent="MainMenuControl/Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MainMenuControl/TextureRect/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_fxjfu")
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="MainMenuControl/Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MainMenuControl/TextureRect/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_fxjfu")
 text = "Quit
 "
 

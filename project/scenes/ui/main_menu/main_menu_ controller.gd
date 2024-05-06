@@ -8,7 +8,6 @@ class_name MainMenu
 # TODO: Update if needed
 @export var game_scene_name = "res://project/game.tscn"
 
-# TODO: Settings menu 
 @onready var settings_menu: Control = %SettingsControl
 @onready var main_menu: Control = %MainMenuControl
 
