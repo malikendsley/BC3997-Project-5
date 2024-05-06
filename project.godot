@@ -18,6 +18,7 @@ Items="*res://project/scripts/inventory/items.gd"
 
 [autoload]
 
+SettingsSave="*res://project/scripts/mechanics/settings_save.gd"
 Items="*res://project/scripts/items/items.gd"
 InputBuffer="*res://project/scripts/mechanics/input_buffer.gd"
 SoundManager="*res://project/scripts/mechanics/sound_manager.gd"
