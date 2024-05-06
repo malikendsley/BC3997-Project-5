@@ -2,6 +2,9 @@
     "loot": {
         "slime": {
             "slime": 1
+        },
+        "rabbit": {
+            "bone": 1
         }
     }
 }

@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://cggfhfql5sxiv" path="res://project/tilesets/base.tres" id="1_ruckg"]
 [ext_resource type="PackedScene" uid="uid://c482l4lqy7g1v" path="res://project/scenes/entities/player/player.tscn" id="2_wpnjs"]
 [ext_resource type="PackedScene" uid="uid://b48hx3yeervyu" path="res://project/scenes/ui/game_ui/game_ui.tscn" id="3_wdykx"]
-[ext_resource type="PackedScene" uid="uid://6pvqeojxe07v" path="res://project/scenes/entities/enemy/slime.tscn" id="4_5y67w"]
 [ext_resource type="PackedScene" uid="uid://cqsv42vav7ulh" path="res://project/scenes/items/item_pickup.tscn" id="5_fkgr2"]
+[ext_resource type="PackedScene" uid="uid://mndqvf585aii" path="res://project/scenes/entities/enemy/rabbit.tscn" id="7_syxno"]
 
 [node name="Testscene" type="Node2D"]
 
@@ -85,10 +85,5 @@ item_id = "slime"
 position = Vector2(80, 114)
 item_id = "bear_claw"
 
-[node name="Slime" parent="." instance=ExtResource("4_5y67w")]
-position = Vector2(-78, 6)
-aggro_range = 100.0
-deaggro_range = 150.0
-attack_range = 40.0
-move_speed = 75.0
-cooldown_time = 1.5
+[node name="Rabbit" parent="." instance=ExtResource("7_syxno")]
+position = Vector2(-45, 56)

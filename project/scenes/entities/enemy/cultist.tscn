@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cghpdjoc555q6"]
+
+[ext_resource type="PackedScene" uid="uid://bxumtieeccywb" path="res://project/scenes/entities/enemy/enemy.tscn" id="1_okmcu"]
+
+[node name="Cultist" instance=ExtResource("1_okmcu")]
+move_speed = 100.0
+knockback_distance = 20.0
+knockback_time = 0.33
