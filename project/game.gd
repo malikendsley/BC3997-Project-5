@@ -17,6 +17,7 @@ var num_stone = 0
 
 func _ready():
     playerref.global_position = respawn_location
+    playerref.start_pos = respawn_location
     spawn_items()
     # refresh the floor loot every night
     TimeManager.night_to_day.connect(spawn_items)

@@ -102,3 +102,4 @@ func drop_inventory_on_ground():
 			var tween = get_tree().create_tween()
 			tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART).tween_property(item, "global_position", destination, 0.5)
 			tween.tween_callback(item.set_collectible.bind(true))
+			remove_item(i)
