@@ -181,6 +181,7 @@ move_speed = 75.0
 enemy_id = "cultist"
 aggro_range = 100.0
 deaggro_range = 150.0
+knockback_time = 0.25
 attack_module = NodePath("Components/CultistAttack")
 
 [node name="BodySprite" parent="Sprites" index="0"]

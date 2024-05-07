@@ -11,12 +11,12 @@
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("2_h80f0")
-move_speed = null
+move_speed = 100.0
 enemy_id = "slime"
-aggro_range = null
-deaggro_range = null
-knockback_distance = null
-knockback_time = null
+aggro_range = 300.0
+deaggro_range = 500.0
+knockback_distance = 20.0
+knockback_time = 0.33
 
 [node name="HurtComponent" parent="Components" index="1"]
 collision_layer = 4

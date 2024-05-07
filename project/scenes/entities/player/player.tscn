@@ -598,6 +598,8 @@ unique_name_in_owner = true
 polygon = PackedVector2Array(15, -8, 5.5774e-05, -22, -15, -8, -10, -1, 10, -1)
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
+position_smoothing_enabled = true
+position_smoothing_speed = 25.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 unique_name_in_owner = true

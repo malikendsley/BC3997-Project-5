@@ -20,7 +20,6 @@ func _ready() -> void:
 
 # hit, deflect and destroyed behavior common to every entity
 func handle_hit(_d_i: DamageInstance) -> void:
-	print("Entity: ", name, " hit")
 	sfx_player.play("flash")
 	hurt_area_component.is_invulnerable = true
 

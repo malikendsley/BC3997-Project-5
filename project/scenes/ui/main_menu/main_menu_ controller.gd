@@ -25,16 +25,13 @@ func _ready():
 	quit_button.pressed.connect(quit_game)
 	
 func start_game():
-	print("Start game")
 	get_tree().change_scene_to_file(game_scene_name)
 
 func settings_opened():
-	print("Settings menu pressed")
 	main_menu.visible = false
 	settings_menu.visible = true
 
 func back_to_main_menu():
-	print("Back to main menu")
 	main_menu.visible = true
 	settings_menu.visible = false
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cejji2ejvyc7r"
-path="res://.godot/imported/bear_claw.png-3b7e51964e23e23bf48aca74bbc2765d.ctex"
+path="res://.godot/imported/claw_pendant.png-d8d35be56ec9fb702515bb6efbb6d211.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://project/textures/items/bear_claw.png"
-dest_files=["res://.godot/imported/bear_claw.png-3b7e51964e23e23bf48aca74bbc2765d.ctex"]
+source_file="res://project/textures/items/claw_pendant.png"
+dest_files=["res://.godot/imported/claw_pendant.png-d8d35be56ec9fb702515bb6efbb6d211.ctex"]
 
 [params]
 

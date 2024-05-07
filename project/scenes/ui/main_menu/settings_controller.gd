@@ -18,7 +18,6 @@ func _ready():
     vsync_option.selected = vsync
 
     master_audio_slider.value = SettingsSave.config.get_value("Audio", "0")
-    print("Set master audio to ", master_audio_slider.value)
     music_audio_slider.value = SettingsSave.config.get_value("Audio", "1")
     sfx_audio_slider.value = SettingsSave.config.get_value("Audio", "2")
 

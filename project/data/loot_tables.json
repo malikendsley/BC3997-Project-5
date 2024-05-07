@@ -1,13 +1,17 @@
 {
     "loot": {
         "slime": {
-            "slime": 1
+            "slime": 0.8
         },
         "rabbit": {
-            "bone": 1
+            "bone": 0.25,
+            "meat": 0.25,
+            "fur": 0.25
         },
         "cultist": {
-            "cloak": 1
+            "cloak": 0.25,
+            "fiber": 0.25,
+            "claw_pendant": 0.25
         }
     }
 }

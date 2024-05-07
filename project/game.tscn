@@ -1,15 +1,18 @@
-[gd_scene load_steps=64 format=3 uid="uid://bqcv563e1c484"]
+[gd_scene load_steps=67 format=3 uid="uid://bqcv563e1c484"]
 
 [ext_resource type="Script" path="res://project/game.gd" id="1_kb78i"]
 [ext_resource type="Texture2D" uid="uid://0efows81c8m6" path="res://raw_art/asset_packs/village assets/Art/Ground Tileset/Tileset_Ground.png" id="2_autjy"]
 [ext_resource type="PackedScene" uid="uid://cqsv42vav7ulh" path="res://project/scenes/items/item_pickup.tscn" id="2_ewbdb"]
 [ext_resource type="Texture2D" uid="uid://m7ahu8oypti5" path="res://raw_art/asset_packs/village assets/Art/Ground Tileset/Tileset_Road.png" id="3_nkcni"]
 [ext_resource type="Texture2D" uid="uid://cr01e08cxc2u0" path="res://raw_art/asset_packs/village assets/Art/Water and Sand/Tileset_Water.png" id="4_a3xlg"]
+[ext_resource type="PackedScene" uid="uid://cghpdjoc555q6" path="res://project/scenes/entities/enemy/cultist.tscn" id="4_joade"]
 [ext_resource type="Texture2D" uid="uid://bdy6mu11hjunp" path="res://raw_art/asset_packs/village assets/Art/Props/Atlas/Props.png" id="4_pi4pr"]
+[ext_resource type="PackedScene" uid="uid://mndqvf585aii" path="res://project/scenes/entities/enemy/rabbit.tscn" id="5_8flt5"]
 [ext_resource type="Texture2D" uid="uid://ksankuwfu8h6" path="res://raw_art/asset_packs/city assets/Tilemaps & Additive Env/roadtilemap16x16.png" id="5_bbkg0"]
 [ext_resource type="Texture2D" uid="uid://duoyy6nk3ietx" path="res://raw_art/asset_packs/village assets/Art/Rock Slopes/Tileset_RockSlope.png" id="5_rxafv"]
 [ext_resource type="Texture2D" uid="uid://k8np7qkho64j" path="res://raw_art/asset_packs/village assets/Art/Trees and Bushes/Atlas/Trees_Bushes.png" id="6_1rwbt"]
 [ext_resource type="Texture2D" uid="uid://c5aqj0utqdr3c" path="res://raw_art/asset_packs/city assets/Tilemaps & Additive Env/roadpit_tilemap_16x16.png" id="6_3hbl1"]
+[ext_resource type="PackedScene" uid="uid://6pvqeojxe07v" path="res://project/scenes/entities/enemy/slime.tscn" id="6_f72n7"]
 [ext_resource type="Texture2D" uid="uid://dv6aqm8lcolff" path="res://raw_art/asset_packs/city assets/cars/cop-big-car-76x76.png" id="6_m0v3e"]
 [ext_resource type="Texture2D" uid="uid://b550kfx1o0ay1" path="res://raw_art/asset_packs/village assets/Art/Rocks/Atlas/Rocks.png" id="7_psty2"]
 [ext_resource type="Texture2D" uid="uid://gyctr5b6wsd2" path="res://raw_art/asset_packs/city assets/Tilemaps & Additive Env/Tilemap32x32_down_environment.png" id="7_ws35s"]
@@ -4457,9 +4460,13 @@ y_sort_enabled = true
 script = ExtResource("1_kb78i")
 item_drop_scene = ExtResource("2_ewbdb")
 
-[node name="EnemyManager" type="Node2D" parent="." node_paths=PackedStringArray("playerref")]
+[node name="EnemyManager" type="Node2D" parent="." node_paths=PackedStringArray("playerref", "enemies_container")]
 script = ExtResource("34_ve2ij")
 playerref = NodePath("../Player")
+cultist = ExtResource("4_joade")
+rabbit = ExtResource("5_8flt5")
+slime = ExtResource("6_f72n7")
+enemies_container = NodePath("../Enemies")
 
 [node name="TileMap" type="TileMap" parent="."]
 unique_name_in_owner = true
@@ -4522,3 +4529,5 @@ editor_only = false
 
 [node name="Items" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="Enemies" type="Node2D" parent="."]

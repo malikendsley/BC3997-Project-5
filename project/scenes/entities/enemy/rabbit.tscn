@@ -340,6 +340,7 @@ move_speed = 75.0
 enemy_id = "rabbit"
 aggro_range = 25.0
 deaggro_range = 50.0
+knockback_time = 0.25
 
 [node name="BodySprite" parent="Sprites" index="0"]
 position = Vector2(0, -11)

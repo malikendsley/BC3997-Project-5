@@ -43,6 +43,11 @@ script = ExtResource("2_ivrdh")
 attack_range = 50.0
 attack_time = 0.5
 cooldown_time = 0.5
+move_speed = 60.0
+aggro_range = 100.0
+deaggro_range = 150.0
+knockback_distance = 25.0
+knockback_time = 0.25
 attack_module = NodePath("Components/SlimeAttack")
 
 [node name="BodySprite" parent="Sprites" index="0"]

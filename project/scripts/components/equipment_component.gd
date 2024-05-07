@@ -26,7 +26,6 @@ var equipped_item: String:
 			equipment_cooldown = Items.get_stats(new_item).cooldown
 			item_sprite.texture = load(texture_template % new_item)
 		equipped_item = new_item
-		print("Equipped: " + equipped_item if equipped_item != "" else "hands" + " Damage: " + str(damage) + " Cooldown: " + str(equipment_cooldown))
 
 var game_ui: GameUIController
 var equipment_timer: float = 0
@@ -49,7 +48,6 @@ func _process(delta):
 	if equipment_timer > 0:
 		equipment_timer -= delta
 		if equipment_timer <= 0:
-			print("Equipment cooled off")
 			equipment_timer = 0
 			_play_animation("RESET")
 			_clear_hitboxes()
