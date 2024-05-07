@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cghpdjoc555q6"]
+[gd_scene load_steps=33 format=3 uid="uid://cghpdjoc555q6"]
 
 [ext_resource type="PackedScene" uid="uid://bxumtieeccywb" path="res://project/scenes/entities/enemy/enemy.tscn" id="1_okmcu"]
 [ext_resource type="Script" path="res://project/scripts/ai/cultist_ai.gd" id="2_6fesp"]
@@ -7,6 +7,29 @@
 [ext_resource type="Texture2D" uid="uid://bcvvl7ctd6bod" path="res://raw_art/Bot Wheel/move with FX.png" id="4_5y1be"]
 [ext_resource type="Texture2D" uid="uid://owdw6cpiev1r" path="res://raw_art/Bot Wheel/shoot with FX.png" id="5_6fueb"]
 [ext_resource type="Script" path="res://project/scripts/components/attack_modules/cultist_attack.gd" id="7_rivcu"]
+
+[sub_resource type="Shader" id="Shader_3utgm"]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+uniform vec4 flash_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+void fragment() {
+	vec4 prev_color = texture(TEXTURE, UV);
+	vec4 new_color = prev_color;
+	if (active == true)
+	{
+		new_color = flash_color;
+	}
+	COLOR = new_color;
+	COLOR.a = prev_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tuq2h"]
+resource_local_to_scene = true
+shader = SubResource("Shader_3utgm")
+shader_parameter/active = false
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_caetd"]
 
@@ -185,6 +208,7 @@ knockback_time = 0.25
 attack_module = NodePath("Components/CultistAttack")
 
 [node name="BodySprite" parent="Sprites" index="0"]
+material = SubResource("ShaderMaterial_tuq2h")
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_caetd")
 

@@ -24,6 +24,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bi7gv"]
+resource_local_to_scene = true
 shader = SubResource("Shader_3utgm")
 shader_parameter/active = false
 shader_parameter/flash_color = Vector4(1, 1, 1, 1)
@@ -92,7 +93,6 @@ stat_component = NodePath("../StatComponent")
 [node name="Inventory" type="Node2D" parent="Components"]
 unique_name_in_owner = true
 script = ExtResource("4_lgval")
-items = null
 item_pickup = ExtResource("5_aqcvp")
 
 [node name="SFXPlayer" type="AnimationPlayer" parent="."]

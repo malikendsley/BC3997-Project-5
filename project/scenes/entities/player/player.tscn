@@ -242,7 +242,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Sprites/Held/Item:z_index")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -306,7 +306,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Sprites/Held/Item:z_index")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -370,7 +370,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Sprites/Held/Item:z_index")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -495,7 +495,7 @@ _data = {
 }
 
 [node name="Player" groups=["player"] instance=ExtResource("1_jydkq")]
-z_index = 10
+z_index = 2
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1
@@ -507,7 +507,7 @@ deceleration = 3000
 [node name="BodySprite" parent="Sprites" index="0"]
 material = SubResource("ShaderMaterial_i3anx")
 sprite_frames = SubResource("SpriteFrames_05g80")
-frame = 1
+frame = 3
 
 [node name="Held" type="Node2D" parent="Sprites" index="1"]
 
@@ -537,9 +537,6 @@ faction = 1
 visible = false
 position = Vector2(0, 3.365)
 shape = SubResource("CapsuleShape2D_y31qe")
-
-[node name="Inventory" parent="Components" index="2"]
-items = {}
 
 [node name="Equipment" type="Node2D" parent="Components" index="3" node_paths=PackedStringArray("anim_player", "player", "item_sprite")]
 unique_name_in_owner = true

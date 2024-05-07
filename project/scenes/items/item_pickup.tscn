@@ -8,6 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlm0y"]
 
 [node name="ItemPickup" type="CharacterBody2D" node_paths=PackedStringArray("item_texture")]
+z_index = 1
 script = ExtResource("1_gvkaf")
 item_texture = NodePath("Sprites/ItemSprite")
 

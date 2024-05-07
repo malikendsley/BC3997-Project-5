@@ -22,9 +22,6 @@ knockback_time = 0.33
 collision_layer = 4
 collision_mask = 0
 
-[node name="Inventory" parent="Components" index="2"]
-items = {}
-
 [node name="AggroArea" type="Area2D" parent="." index="4"]
 collision_layer = 0
 collision_mask = 2
