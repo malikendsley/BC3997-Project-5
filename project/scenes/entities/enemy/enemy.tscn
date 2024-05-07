@@ -1,7 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxumtieeccywb"]
+[gd_scene load_steps=5 format=3 uid="uid://bxumtieeccywb"]
 
 [ext_resource type="PackedScene" uid="uid://cbyh3nd31pvvp" path="res://project/scenes/entities/entity.tscn" id="1_sdxrd"]
+[ext_resource type="Script" path="res://project/scripts/ai/base_ai.gd" id="2_h80f0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghy5n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qx043"]
 
 [node name="Entity" instance=ExtResource("1_sdxrd")]
 collision_layer = 0
 motion_mode = 1
+script = ExtResource("2_h80f0")
+move_speed = null
+enemy_id = "slime"
+aggro_range = null
+deaggro_range = null
+knockback_distance = null
+knockback_time = null
+
+[node name="HurtComponent" parent="Components" index="1"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Inventory" parent="Components" index="2"]
+items = {}
+
+[node name="AggroArea" type="Area2D" parent="." index="4"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="AggroCircle" type="CollisionShape2D" parent="AggroArea" index="0"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_ghy5n")
+
+[node name="DeaggroArea" type="Area2D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="DeaggroCircle" type="CollisionShape2D" parent="DeaggroArea" index="0"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_qx043")
+
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_range_enter"]
+[connection signal="body_exited" from="DeaggroArea" to="." method="_on_deaggro_range_exit"]

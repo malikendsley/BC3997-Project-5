@@ -94,9 +94,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xhuy"]
-radius = 8.0
-height = 27.64
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywkj7"]
+size = Vector2(10, 6)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y31qe"]
 radius = 5.64
@@ -520,9 +519,8 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_s3yi1")
 
 [node name="MoveBox" parent="." index="1"]
-visible = false
-position = Vector2(0, 1.46)
-shape = SubResource("CapsuleShape2D_8xhuy")
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_ywkj7")
 
 [node name="StatComponent" parent="Components" index="0"]
 script = ExtResource("5_iglqn")
@@ -539,6 +537,9 @@ faction = 1
 visible = false
 position = Vector2(0, 3.365)
 shape = SubResource("CapsuleShape2D_y31qe")
+
+[node name="Inventory" parent="Components" index="2"]
+items = {}
 
 [node name="Equipment" type="Node2D" parent="Components" index="3" node_paths=PackedStringArray("anim_player", "player", "item_sprite")]
 unique_name_in_owner = true

@@ -11,7 +11,7 @@ const texture_template = "res://project/textures/items/%s.png"
 @onready var icon: Sprite2D = %Icon
 @onready var inventory_screen = %InventoryScreen
 @onready var equipped_icon: TextureRect = %EquippedItemIcon
-
+@onready var day_counter: Label = %DayCounter
 var max_hp: float = 0
 var max_energy: float = 0
 
@@ -35,6 +35,9 @@ func set_hp(new_hp: float) -> void:
 	if new_hp < 0:
 		new_hp = 0
 	icon.frame = int(lerp(5, 0, new_hp / max_hp))
+
+func _process(_delta):
+	day_counter.text = "Day " + str(TimeManager.get_day())
 
 func set_energy(new_energy: float) -> void:
 	energy_progress_bar.value = new_energy

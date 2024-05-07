@@ -90,11 +90,9 @@ func get_all_items() -> Dictionary:
 func drop_inventory_on_ground():
 	for i in items:
 		for j in range(items[i]):
-			print("Dropping item '", i, "'")
 			# pick random point at LOOT_SPLASH_RADIUS
 			var angle = randf() * 2 * PI
 			var destination = Vector2(global_position.x + cos(angle) * LOOT_SPLASH_RADIUS, global_position.y + sin(angle) * LOOT_SPLASH_RADIUS)
-			print("Tweening from ", global_position, " to ", destination)
 			# create item entity
 			var item = item_pickup.instantiate() as ItemPickup
 			item.collectible = false

@@ -2,6 +2,12 @@
     "loot": {
         "slime": {
             "slime": 1
+        },
+        "rabbit": {
+            "bone": 1
+        },
+        "cultist": {
+            "cloak": 1
         }
     }
 }
