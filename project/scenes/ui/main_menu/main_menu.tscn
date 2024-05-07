@@ -206,6 +206,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="MainMenuControl"]
+layout_mode = 0
 offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("3_ip563")
