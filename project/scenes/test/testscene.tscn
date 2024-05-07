@@ -86,3 +86,4 @@ position = Vector2(80, 114)
 item_id = "bear_claw"
 
 [node name="Cultist" parent="." instance=ExtResource("6_810rx")]
+position = Vector2(-116, 56)

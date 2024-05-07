@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1i3ellbkswm7"]
+
+[ext_resource type="Script" path="res://project/scenes/projectiles/bullet.gd" id="1_mkoka"]
+[ext_resource type="Texture2D" uid="uid://da3wn83pcpii6" path="res://raw_art/blockouts/bullet.png" id="2_hrwaq"]
+[ext_resource type="Script" path="res://project/scripts/components/hit_area_component.gd" id="3_g8q7n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iw058"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xvis"]
+atlas = ExtResource("2_hrwaq")
+region = Rect2(0, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8bpp"]
+atlas = ExtResource("2_hrwaq")
+region = Rect2(5, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaxhb"]
+atlas = ExtResource("2_hrwaq")
+region = Rect2(10, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sth18"]
+atlas = ExtResource("2_hrwaq")
+region = Rect2(15, 0, 5, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yy48l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xvis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8bpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aaxhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sth18")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ptvc5"]
+radius = 3.0
+
+[node name="Bullet" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_mkoka")
+speed = 75
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_iw058")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yy48l")
+autoplay = "default"
+frame_progress = 0.785398
+
+[node name="HitAreaComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_g8q7n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitAreaComponent"]
+shape = SubResource("CircleShape2D_ptvc5")
+
+[connection signal="hit_something" from="HitAreaComponent" to="." method="_on_hit_area_component_hit_something"]

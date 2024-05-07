@@ -8,11 +8,14 @@ extends AttackModule
 
 # fire a burst of 3 shots at the target
 func attack(target: Player):
-
 	for i in range(3):
 		# the attack was interrupted
 		if attached_ai.cur_state != attached_ai.EnemyState.ATTACKED:
 			return
 		attached_ai.actual_sprite.play("shoot")
+		var bullet = bullet_scene.instantiate()
+		bullet.global_position = spawn_anchor.global_position
+		get_tree().current_scene.add_child(bullet)
+		bullet.fire(target.global_position - spawn_anchor.global_position)
 		await attached_ai.actual_sprite.animation_finished
 	attack_finished.emit()

@@ -30,6 +30,7 @@ func _ready():
 	add_to_group("player") # in case needed
 	stat_component.health_changed.connect(_handle_hp_change)
 	stat_component.energy_changed.connect(_handle_energy_change)
+	stat_component.no_health.connect(_handle_killed)
 	# TODO: This seems cyclic, maybe fix _ready() calls?
 	game_ui.call_deferred("initialize", stat_component.current_health, stat_component.max_energy)
 	game_ui.item_equipped.connect(_handle_item_equipped)
@@ -109,6 +110,10 @@ func _handle_item_equipped(item_id: String):
 
 func _handle_hp_change(new_hp: int):
 	game_ui.set_hp(new_hp)
+
+func _handle_killed(_d_i: DamageInstance):
+	print("You are dead!")
+	game_ui.set_hp(0)
 
 func _handle_energy_change(new_energy: int):
 	game_ui.set_energy(new_energy)
