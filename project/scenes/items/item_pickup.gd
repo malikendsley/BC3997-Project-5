@@ -1,7 +1,7 @@
 class_name ItemPickup
 extends CharacterBody2D
 
-# TODO: Could pull these strings into a separate file for easier maintenance
+signal collected(id: String)
 const texture_template = "res://project/textures/items/%s.png"
 
 @export var item_id: String = "wood"
@@ -31,6 +31,7 @@ func _process(delta):
 	if collectible:
 		if touching:
 			Player.get_singleton().inventory.add_item(item_id, quantity)
+			collected.emit(item_id)
 			queue_free()
 		curr_time += delta
 		velocity.y = sin(curr_time * TIME_MULTIPLIER) * BOUNCE_AMPLITUDE
