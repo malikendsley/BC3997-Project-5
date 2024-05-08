@@ -34,9 +34,6 @@ func initialize(my_item_id: String, my_quantity: int):
 	is_equippable = Items.is_equippable(my_item_id)
 	quantity = my_quantity
 	update_labels_and_textures()
-	
-	if !Items.is_equippable(item_id) and !Items.is_consumable(item_id):
-		item_button.disabled = true
 
 func _on_item_button_pressed():
 	item_selected.emit(item_id)

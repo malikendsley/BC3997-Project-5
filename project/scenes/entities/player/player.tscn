@@ -597,6 +597,7 @@ unique_name_in_owner = true
 polygon = PackedVector2Array(15, -8, 5.5774e-05, -22, -15, -8, -10, -1, 10, -1)
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
+unique_name_in_owner = true
 position_smoothing_enabled = true
 position_smoothing_speed = 25.0
 
@@ -616,6 +617,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
+[node name="MarinaPopup" type="Panel" parent="CanvasLayer" index="1"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -164.0
+offset_top = -19.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/MarinaPopup" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "You could launch a boat here..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SwingSound" type="AudioStreamPlayer" parent="." index="7"]
 unique_name_in_owner = true

@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Game Design Project 5"
-run/main_scene="res://project/scenes/test/testscene.tscn"
+config/name="Island Survival"
+run/main_scene="res://project/scenes/ui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.0941176, 0.156863, 0.12549, 1)
 config/icon="res://project/icon.svg"

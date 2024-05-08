@@ -56,7 +56,10 @@ func _process(delta):
 			equipment_finished.emit()
 
 func equip_item(new_item: String):
-	assert(Items.is_item(new_item), "Invalid item: " + new_item)
+	if new_item == "":
+		game_ui.set_equipped_item("")
+		equipped_item = ""
+		return
 	assert(Items.is_equippable(new_item), "Invalid item: " + new_item)
 	# Previously nothing equipped
 	if equipped_item == "":

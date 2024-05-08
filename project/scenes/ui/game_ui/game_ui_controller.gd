@@ -12,6 +12,7 @@ const texture_template = "res://project/textures/items/%s.png"
 @onready var inventory_screen = %InventoryScreen
 @onready var equipped_icon: TextureRect = %EquippedItemIcon
 @onready var day_counter: Label = %DayCounter
+var playerref: Player = null
 var max_hp: float = 0
 var max_energy: float = 0
 
@@ -22,11 +23,12 @@ func _ready():
 	inventory_screen.item_selected.connect(on_item_selected)
 
 # Separating from _ready() allows this to be called after everything else is ready
-func initialize(max_health, maximum_energy):
+func initialize(max_health, maximum_energy, player):
 	max_hp = max_health
 	max_energy = maximum_energy
 	hp_progress_bar.max_value = max_hp
 	energy_progress_bar.max_value = max_energy
+	playerref = player
 	set_hp(max_hp)
 	set_energy(max_energy)
 
@@ -43,6 +45,12 @@ func set_energy(new_energy: float) -> void:
 	energy_progress_bar.value = new_energy
 
 func on_item_selected(item_id: String):
+	# special case using raft in marina
+	if item_id == "raft" and playerref.in_marina:
+		playerref.on_end_game()
+		return
+	else:
+		print("Item ", item_id, " not raft")
 	if Items.is_equippable(item_id):
 		item_equipped.emit(item_id)
 	elif Items.is_consumable(item_id):

@@ -87,6 +87,7 @@ func clear_type_of_enemy(type: String):
 	for enemy in enemies_container.get_children():
 		if (enemy as Enemy).enemy_id == type:
 			enemy.queue_free()
+			enemy_counts[type] -= 1
 
 func spawn_enemy(enemy_type: String, pos: Vector2):
 	var enemy_instance = enemy_types[enemy_type].instantiate()
