@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bqcv563e1c484"]
+[gd_scene load_steps=71 format=3 uid="uid://bqcv563e1c484"]
 
 [ext_resource type="Script" path="res://project/game.gd" id="1_kb78i"]
 [ext_resource type="Texture2D" uid="uid://0efows81c8m6" path="res://raw_art/asset_packs/village assets/Art/Ground Tileset/Tileset_Ground.png" id="2_autjy"]
@@ -37,6 +37,10 @@
 [ext_resource type="PackedScene" uid="uid://c482l4lqy7g1v" path="res://project/scenes/entities/player/player.tscn" id="30_ffamy"]
 [ext_resource type="PackedScene" uid="uid://b48hx3yeervyu" path="res://project/scenes/ui/game_ui/game_ui.tscn" id="31_wf1k3"]
 [ext_resource type="Script" path="res://project/scripts/mechanics/enemy_manager.gd" id="34_ve2ij"]
+[ext_resource type="AudioStream" uid="uid://budxndjc0fswu" path="res://project/sounds/city_icecreamtruck.wav" id="38_ve6fj"]
+[ext_resource type="Script" path="res://project/scripts/mechanics/loop2d.gd" id="39_anytn"]
+[ext_resource type="Script" path="res://project/scripts/mechanics/loop.gd" id="39_yqi4t"]
+[ext_resource type="AudioStream" uid="uid://c6ec2d8bkf5ng" path="res://project/sounds/city_parksound.wav" id="40_r8qkx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d7c4k"]
 texture = ExtResource("2_autjy")
@@ -4515,3 +4519,16 @@ editor_only = false
 unique_name_in_owner = true
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-480, 290)
+stream = ExtResource("38_ve6fj")
+autoplay = true
+max_distance = 250.0
+bus = &"Music"
+script = ExtResource("39_anytn")
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("40_r8qkx")
+bus = &"Music"
+script = ExtResource("39_yqi4t")

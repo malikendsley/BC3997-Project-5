@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cghpdjoc555q6"]
+[gd_scene load_steps=35 format=3 uid="uid://cghpdjoc555q6"]
 
 [ext_resource type="PackedScene" uid="uid://bxumtieeccywb" path="res://project/scenes/entities/enemy/enemy.tscn" id="1_okmcu"]
 [ext_resource type="Script" path="res://project/scripts/ai/cultist_ai.gd" id="2_6fesp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://owdw6cpiev1r" path="res://raw_art/Bot Wheel/shoot with FX.png" id="5_6fueb"]
 [ext_resource type="Script" path="res://project/scripts/components/attack_modules/cultist_attack.gd" id="7_rivcu"]
 [ext_resource type="PackedScene" uid="uid://b1i3ellbkswm7" path="res://project/scenes/projectiles/bullet.tscn" id="8_mw1s1"]
+[ext_resource type="AudioStream" uid="uid://bcgftwltgvxfq" path="res://project/sounds/shoot_sound.wav" id="9_nh06a"]
 
 [sub_resource type="Shader" id="Shader_3utgm"]
 code = "shader_type canvas_item;
@@ -199,8 +200,8 @@ size = Vector2(12, 16)
 [node name="Cultist" node_paths=PackedStringArray("attack_module") instance=ExtResource("1_okmcu")]
 script = ExtResource("2_6fesp")
 attack_range = 75.0
-attack_time = 0.5
-cooldown_time = 0.5
+attack_time = 1.0
+cooldown_time = 1.5
 move_speed = 75.0
 enemy_id = "cultist"
 aggro_range = 100.0
@@ -231,6 +232,9 @@ shape = SubResource("RectangleShape2D_75mp2")
 [node name="StatComponent" parent="Components" index="0"]
 max_health = 20
 
+[node name="HurtComponent" parent="Components" index="1"]
+invulnerable_duration = 0.2
+
 [node name="CollisionShape2D" parent="Components/HurtComponent" index="0"]
 position = Vector2(1, -8)
 shape = SubResource("RectangleShape2D_gojuy")
@@ -239,6 +243,11 @@ shape = SubResource("RectangleShape2D_gojuy")
 script = ExtResource("7_rivcu")
 bullet_scene = ExtResource("8_mw1s1")
 spawn_anchor = NodePath("../../Sprites/BodySprite/SpawnAnchor")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="Components/CultistAttack" index="0"]
+unique_name_in_owner = true
+stream = ExtResource("9_nh06a")
+bus = &"SFX"
 
 [node name="AggroArea" parent="." index="4"]
 visible = false

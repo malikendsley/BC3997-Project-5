@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c482l4lqy7g1v"]
+[gd_scene load_steps=32 format=3 uid="uid://c482l4lqy7g1v"]
 
 [ext_resource type="PackedScene" uid="uid://cbyh3nd31pvvp" path="res://project/scenes/entities/entity.tscn" id="1_jydkq"]
 [ext_resource type="Script" path="res://project/scenes/entities/player/player.gd" id="2_744ml"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://xda8i5hj4ev2" path="res://project/textures/items/stone_sword.png" id="4_s3yi1"]
 [ext_resource type="Script" path="res://project/scripts/components/player_stat_component.gd" id="5_iglqn"]
 [ext_resource type="Script" path="res://project/scripts/components/hit_area_component.gd" id="6_o5vki"]
+[ext_resource type="AudioStream" uid="uid://cperqobtjufds" path="res://project/sounds/sword_swing.wav" id="8_tr4n5"]
 
 [sub_resource type="Shader" id="Shader_andxq"]
 code = "shader_type canvas_item;
@@ -538,12 +539,13 @@ visible = false
 position = Vector2(0, 3.365)
 shape = SubResource("CapsuleShape2D_y31qe")
 
-[node name="Equipment" type="Node2D" parent="Components" index="3" node_paths=PackedStringArray("anim_player", "player", "item_sprite")]
+[node name="Equipment" type="Node2D" parent="Components" index="3" node_paths=PackedStringArray("anim_player", "player", "item_sprite", "sword_swing")]
 unique_name_in_owner = true
 script = ExtResource("4_rowrr")
 anim_player = NodePath("../../AnimationPlayer")
 player = NodePath("../..")
 item_sprite = NodePath("../../Sprites/Held/Item")
+sword_swing = NodePath("../../SwingSound")
 
 [node name="AttackHitboxes" type="Node2D" parent="Components/Equipment" index="0"]
 unique_name_in_owner = true
@@ -614,3 +616,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
+[node name="SwingSound" type="AudioStreamPlayer" parent="." index="7"]
+unique_name_in_owner = true
+stream = ExtResource("8_tr4n5")
+bus = &"SFX"

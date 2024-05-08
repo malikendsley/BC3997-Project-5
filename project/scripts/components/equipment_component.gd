@@ -13,6 +13,7 @@ signal equipment_finished()
 @export var anim_player: AnimationPlayer
 @export var player: Player
 @export var item_sprite: Sprite2D
+@export var sword_swing: AudioStreamPlayer
 var base_swing_cd: float = 0.33
 
 var equipped_item: String:
@@ -98,7 +99,7 @@ func use_equipment(location: Vector2) -> bool:
 		else:
 			_play_animation("swing_up")
 			uphit.disabled = false
-
+	sword_swing.play()
 	return true
 
 func _play_animation(anim_name: String):

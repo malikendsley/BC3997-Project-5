@@ -12,7 +12,9 @@ var sounds = {
 	"eat": preload (sound_template + "eat" + ".ogg"),
 	"epic": preload (sound_template + "epic" + ".ogg"),
 	"equip": preload (sound_template + "equip" + ".ogg"),
-	"click": preload (sound_template + "click" + ".ogg")
+	"click": preload (sound_template + "click" + ".ogg"),
+	"death": preload (sound_template + "death" + sound_extension),
+	"pickup": preload (sound_template + "pickup" + sound_extension)
 }
 
 var sfx_player: AudioStreamPlayer

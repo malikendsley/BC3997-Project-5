@@ -32,6 +32,7 @@ func _process(delta):
 		if touching:
 			Player.get_singleton().inventory.add_item(item_id, quantity)
 			collected.emit(item_id)
+			SoundManager.play_sound("pickup")
 			queue_free()
 		curr_time += delta
 		velocity.y = sin(curr_time * TIME_MULTIPLIER) * BOUNCE_AMPLITUDE

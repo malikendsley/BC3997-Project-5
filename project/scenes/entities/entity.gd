@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var body_sprite: AnimatedSprite2D = %BodySprite
 @onready var sfx_player: AnimationPlayer = %SFXPlayer
 @onready var inventory: Inventory = %Inventory
+@onready var hitsoundplayer: AudioStreamPlayer = %HitSoundPlayer
 #endregion
 
 func _ready() -> void:
@@ -22,9 +23,9 @@ func _ready() -> void:
 func handle_hit(_d_i: DamageInstance) -> void:
 	sfx_player.play("flash")
 	hurt_area_component.is_invulnerable = true
-
+	hitsoundplayer.play()
 func handle_deflect() -> void:
 	pass
 
 func handle_destroyed(_d_i: DamageInstance) -> void:
-	pass
+	SoundManager.play_sound("death")
