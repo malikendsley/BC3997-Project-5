@@ -4298,10 +4298,6 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MarinaArea"]
 shape = SubResource("RectangleShape2D_2nx31")
 
-[node name="ItemPickup" parent="." instance=ExtResource("2_ewbdb")]
-position = Vector2(-506, 88)
-item_id = "raft"
-
 [node name="MarinaBoat" type="Sprite2D" parent="."]
 visible = false
 z_index = 10
