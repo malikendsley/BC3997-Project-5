@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbyh3nd31pvvp"]
+[gd_scene load_steps=12 format=3 uid="uid://cbyh3nd31pvvp"]
 
 [ext_resource type="Script" path="res://project/scenes/entities/entity.gd" id="1_7l8rf"]
 [ext_resource type="Script" path="res://project/scripts/components/stat_component.gd" id="1_x2fu7"]
 [ext_resource type="Script" path="res://project/scripts/components/hurt_component.gd" id="2_03hgm"]
 [ext_resource type="Script" path="res://project/scripts/components/inventory.gd" id="4_lgval"]
 [ext_resource type="PackedScene" uid="uid://cqsv42vav7ulh" path="res://project/scenes/items/item_pickup.tscn" id="5_aqcvp"]
+[ext_resource type="AudioStream" uid="uid://kldg5pryafdr" path="res://project/sounds/hit_sound.wav" id="6_aqidd"]
 
 [sub_resource type="Shader" id="Shader_3utgm"]
 code = "shader_type canvas_item;
@@ -24,6 +25,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bi7gv"]
+resource_local_to_scene = true
 shader = SubResource("Shader_3utgm")
 shader_parameter/active = false
 shader_parameter/flash_color = Vector4(1, 1, 1, 1)
@@ -86,13 +88,13 @@ script = ExtResource("1_x2fu7")
 unique_name_in_owner = true
 script = ExtResource("2_03hgm")
 stat_component = NodePath("../StatComponent")
+invulnerable_duration = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtComponent"]
 
 [node name="Inventory" type="Node2D" parent="Components"]
 unique_name_in_owner = true
 script = ExtResource("4_lgval")
-items = null
 item_pickup = ExtResource("5_aqcvp")
 
 [node name="SFXPlayer" type="AnimationPlayer" parent="."]
@@ -100,3 +102,8 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_52a2m")
 }
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_aqidd")
+bus = &"SFX"

@@ -1,6 +1,8 @@
 class_name Enemy
 extends Entity
 
+signal killed(this: Enemy)
+
 @onready var aggro_area: CollisionShape2D = %AggroCircle
 @onready var deaggro_area: CollisionShape2D = %DeaggroCircle
 @export var move_speed: float = 100
@@ -31,8 +33,8 @@ func _ready():
 	super()
 	var loot_id = Items.roll_loot_table(enemy_id)
 	if loot_id != "":
-		var num_items = randi() % 3 + 1
-		inventory.add_item(loot_id, num_items)
+		# TODO slows the pace of the game
+		inventory.add_item(loot_id, 1)
 	assert(aggro_area.shape is CircleShape2D)
 	assert(deaggro_area.shape is CircleShape2D)
 	aggro_area.shape.radius = aggro_range
@@ -43,6 +45,7 @@ func _ready():
 
 func handle_destroyed(_d_i: DamageInstance) -> void:
 	super(_d_i)
+	killed.emit(self)
 	inventory.drop_inventory_on_ground()
 	queue_free()
 

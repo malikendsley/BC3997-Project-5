@@ -38,7 +38,6 @@ func increase_energy(amount: int):
 # returns true if the consumable was used
 func try_apply_consumable(item_id: String) -> bool:
 	var effects = Items.get_effects(item_id)
-	print(effects)
 	var consume = false
 	
 	if effects.has("energy"):

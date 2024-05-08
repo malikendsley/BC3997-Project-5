@@ -53,12 +53,23 @@
 				"energy": 10
 			}
 		},
-		"bear_claw": {
-			"id": "bear_claw",
-			"name": "Bear Claw",
+		"claw_pendant": {
+			"id": "claw_pendant",
+			"name": "Claw Pendant",
 			"type": "Resource",
 			"recipe": null,
 			"is_equippable": false
+		},
+		"meat": {
+			"id": "meat",
+			"name": "Meat",
+			"type": "Resource",
+			"recipe": null,
+			"is_equippable": false,
+			"effects": {
+				"health": 5,
+				"energy": 20
+			}
 		},
 		"stone_axe": {
 			"id": "stone_axe",
@@ -98,7 +109,7 @@
 			"type": "Material",
 			"recipe": [
 				"fiber",
-				"fiber",		
+				"fiber",
 				"fiber",
 				"slime",
 				"slime"
@@ -111,7 +122,7 @@
 			"type": "Material",
 			"recipe": [
 				"cloak",
-				"cloak",		
+				"cloak",
 				"fur",
 				"fur"
 			],
@@ -123,7 +134,7 @@
 			"type": "Material",
 			"recipe": [
 				"wood",
-				"wood",		
+				"wood",
 				"wood",
 				"bone",
 				"bone"
@@ -169,7 +180,7 @@
 			"name": "Anchor",
 			"type": "Material",
 			"recipe": [
-				"bear_claw",
+				"claw_pendant",
 				"stone",
 				"stone",
 				"stone",

@@ -46,7 +46,6 @@ func on_item_selected(item_id: String):
 	if Items.is_equippable(item_id):
 		item_equipped.emit(item_id)
 	elif Items.is_consumable(item_id):
-		print("Consumable item clicked")
 		item_consumed.emit(item_id)
 
 func set_equipped_item(item_name: String):

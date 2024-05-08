@@ -25,7 +25,6 @@ func _process(delta):
             if player_in_range:
                 cur_state = EnemyState.AGGRO
         EnemyState.AGGRO:
-            print("Fleeing")
             # flee from player
             destination = global_position # when we return to idle, will stop in place
             var dir = (global_position - playerref.global_position).normalized()

@@ -1,7 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxumtieeccywb"]
+[gd_scene load_steps=7 format=3 uid="uid://bxumtieeccywb"]
 
 [ext_resource type="PackedScene" uid="uid://cbyh3nd31pvvp" path="res://project/scenes/entities/entity.tscn" id="1_sdxrd"]
 [ext_resource type="Script" path="res://project/scripts/ai/base_ai.gd" id="2_h80f0"]
+
+[sub_resource type="Shader" id="Shader_3utgm"]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+uniform vec4 flash_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+void fragment() {
+	vec4 prev_color = texture(TEXTURE, UV);
+	vec4 new_color = prev_color;
+	if (active == true)
+	{
+		new_color = flash_color;
+	}
+	COLOR = new_color;
+	COLOR.a = prev_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bm16h"]
+resource_local_to_scene = true
+shader = SubResource("Shader_3utgm")
+shader_parameter/active = false
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghy5n"]
 
@@ -11,19 +34,19 @@
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("2_h80f0")
-move_speed = null
+move_speed = 100.0
 enemy_id = "slime"
-aggro_range = null
-deaggro_range = null
-knockback_distance = null
-knockback_time = null
+aggro_range = 300.0
+deaggro_range = 500.0
+knockback_distance = 20.0
+knockback_time = 0.33
+
+[node name="BodySprite" parent="Sprites" index="0"]
+material = SubResource("ShaderMaterial_bm16h")
 
 [node name="HurtComponent" parent="Components" index="1"]
 collision_layer = 4
 collision_mask = 0
-
-[node name="Inventory" parent="Components" index="2"]
-items = {}
 
 [node name="AggroArea" type="Area2D" parent="." index="4"]
 collision_layer = 0

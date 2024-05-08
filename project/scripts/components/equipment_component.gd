@@ -13,6 +13,7 @@ signal equipment_finished()
 @export var anim_player: AnimationPlayer
 @export var player: Player
 @export var item_sprite: Sprite2D
+@export var sword_swing: AudioStreamPlayer
 var base_swing_cd: float = 0.33
 
 var equipped_item: String:
@@ -26,7 +27,6 @@ var equipped_item: String:
 			equipment_cooldown = Items.get_stats(new_item).cooldown
 			item_sprite.texture = load(texture_template % new_item)
 		equipped_item = new_item
-		print("Equipped: " + equipped_item if equipped_item != "" else "hands" + " Damage: " + str(damage) + " Cooldown: " + str(equipment_cooldown))
 
 var game_ui: GameUIController
 var equipment_timer: float = 0
@@ -49,7 +49,6 @@ func _process(delta):
 	if equipment_timer > 0:
 		equipment_timer -= delta
 		if equipment_timer <= 0:
-			print("Equipment cooled off")
 			equipment_timer = 0
 			_play_animation("RESET")
 			_clear_hitboxes()
@@ -100,7 +99,7 @@ func use_equipment(location: Vector2) -> bool:
 		else:
 			_play_animation("swing_up")
 			uphit.disabled = false
-
+	sword_swing.play()
 	return true
 
 func _play_animation(anim_name: String):

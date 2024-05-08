@@ -20,9 +20,7 @@ func _process(_delta):
             _damage_target(target)
 
 func _on_hurt_area_entered(hurt_area: HurtComponent):
-    print("Area entered")
     if hurt_area is HurtComponent:
-        print("Area is hurt area")
         if continuous:
             if hurt_area not in damage_targets:
                 damage_targets.append(hurt_area)

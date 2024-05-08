@@ -88,7 +88,6 @@ func close_inventory_screen():
 	self.visible = false
 
 func open_inventory_screen():
-	print("opening inventory")
 	refresh_inventory()
 	self.visible = true
 

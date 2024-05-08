@@ -62,6 +62,6 @@ func initialize(my_item_id: String, my_can_craft: bool):
 	gen_recipe()
 
 func _on_entry_button_pressed():
-	player_inventory_node.craft(item_id)
-	SoundManager.play_sound("click")
+	if player_inventory_node.craft(item_id):
+		SoundManager.play_sound("craft")
 	inventory_changed.emit()

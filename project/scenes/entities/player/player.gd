@@ -4,6 +4,7 @@ extends Entity
 
 @onready var equipment_component: EquipmentComponent = %Equipment
 @onready var anim_player: AnimationPlayer = %AnimationPlayer
+@onready var fullscreen_color_rect: ColorRect = %ColorRect
 
 @export_category("References")
 @export var game_ui: GameUIController
@@ -23,6 +24,7 @@ enum PlayerState {
 var current_state: PlayerState = PlayerState.IDLE
 var input_vector = Vector2()
 var last_anim = ""
+var start_pos: Vector2
 
 func _ready():
 	super()
@@ -30,6 +32,9 @@ func _ready():
 	add_to_group("player") # in case needed
 	stat_component.health_changed.connect(_handle_hp_change)
 	stat_component.energy_changed.connect(_handle_energy_change)
+	stat_component.no_health.connect(_handle_killed)
+	# TODO hacky but works because we don't care about the damage instance
+	(stat_component as PlayerStatComponent).no_energy.connect(_handle_killed.bind(DamageInstance.new(0, DamageInstance.Faction.NONE, self, Vector2())))
 	# TODO: This seems cyclic, maybe fix _ready() calls?
 	game_ui.call_deferred("initialize", stat_component.current_health, stat_component.max_energy)
 	game_ui.item_equipped.connect(_handle_item_equipped)
@@ -109,6 +114,30 @@ func _handle_item_equipped(item_id: String):
 
 func _handle_hp_change(new_hp: int):
 	game_ui.set_hp(new_hp)
+
+func _handle_killed(_d_i: DamageInstance):
+	game_ui.set_hp(0)
+	game_ui.inventory_screen.close_inventory_screen()
+	current_state = PlayerState.LOCKED
+	for i in range(3):
+		sfx_player.play("flash")
+		await sfx_player.animation_finished
+		await get_tree().create_timer(0.25).timeout
+	body_sprite.visible = false
+	inventory.drop_inventory_on_ground()
+	await get_tree().create_timer(1).timeout
+	# TODO: If we decide to have a game over screen, this is where it would be called
+	var tween = get_tree().create_tween()
+	tween.tween_property(fullscreen_color_rect, "color", Color(0, 0, 0, 1), 1)
+	await tween.finished
+	global_position = start_pos
+	tween = get_tree().create_tween()
+	tween.tween_property(fullscreen_color_rect, "color", Color(0, 0, 0, 0), 1)
+	await tween.finished
+	body_sprite.visible = true
+	stat_component.current_health = stat_component.max_health
+	(stat_component as PlayerStatComponent).current_energy = (stat_component as PlayerStatComponent).max_energy
+	current_state = PlayerState.IDLE
 
 func _handle_energy_change(new_energy: int):
 	game_ui.set_energy(new_energy)

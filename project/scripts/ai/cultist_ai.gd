@@ -28,7 +28,6 @@ func _process(delta):
 func handle_destroyed(d_i):
     velocity = Vector2()
     cur_state = EnemyState.DEAD # Prevents the AI from doing anything else
-    print("killed")
     actual_sprite.play("die")
     await get_tree().create_timer(0.5).timeout
     super(d_i)
